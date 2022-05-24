@@ -1,0 +1,62 @@
+--------- Introduction --------- 
+The initial task from the progtest system: 
+    Write a graphic game in the genre of Tower Defense.
+    This game should be able to (main points):
+    1. Read game maps and characteristics of enemies/towers from ﬁles.
+    2. Implement several strategies for passing the game map.
+    3. Implement score statistics and the interaction of towers and enemies.
+
+My deﬁnition of the task:
+    The style of the game will resemble the classic arcade 2D pixel game of the old days of the dawn 
+    of the gaming industry - “Battle city”.
+
+    Tanks will be used as enemies, turrets will be used as defense towers.
+
+    The action takes place on an 8 by 8 tile map (like a chessboard). 
+
+    The game map will be read from a ﬁle, where it is deﬁned by a sequence of 64 characters, each of 
+    which encodes a speciﬁc tile of the ﬁeld.
+
+
+
+--------- Game objects --------- 
+Tile:
+    The tile of the ﬁeld can be of the type:
+
+    - Road (Along which the tanks will move)
+    - Wall (Accordingly, no one will move there, there will be no interaction with this cell)
+    - Place to install a turret (Where it will be possible to put a certain turret)
+
+    The tile is deﬁned as 80 x 80 pixels for a game (virtual) screen of 640 x 720 pixels.
+
+Tank: 
+    As already written, tanks act as enemies. They move, take damage, have diﬀerent characteristics, which means this is a great opportunity to apply polymorphism.
+
+    The tank can be of type:
+
+    - Light
+    - Medium
+    - Heavy
+
+    They all differ in the amount of health, speed, sprites (game textures), ways to bypass the game map, and so on.
+
+Turret: 
+    The turret can be:
+
+    - Firebird
+    - Freeze
+    - Smoky
+
+    They all differ in damage, reload speed, sprites, external effects, cost, the way they interact with the tank, and so on.
+
+
+
+--------- Game goal --------- 
+The goal of the game:
+    The game is an arcade game where, due to the limitations of the 8 x 8 playing ﬁeld, sooner or later the player will be defeated.
+
+    Therefore, the goal of the game is incredibly simple:
+
+    Hold out as long as possible, get as many points as possible, kill as many tanks as possible, place turrets as eﬀectively as possible.
+
+
