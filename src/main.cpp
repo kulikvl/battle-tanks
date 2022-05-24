@@ -8,9 +8,6 @@
 
 int main(int argc, char* args[])
 {
-    
-    
-    
     try
     {
         Config::load("config.ini");

@@ -1,5 +1,4 @@
 #include "SDL.hpp"
-#include "Log.hpp"
 
 bool SDL::init()
 {
@@ -7,7 +6,7 @@ bool SDL::init()
     {
         Log::error("SDL_Init: Couldn't start SDL");
         Log::error(std::string(SDL_GetError()));
-        throw "SDL Init Fail";
+        throw "SDL_Init exception";
     }
     
     if (!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ))
@@ -20,7 +19,7 @@ bool SDL::init()
     {
         Log::error("SDL_Init: Couldn't start SDL");
         Log::error(std::string(SDL_GetError()));
-        throw "IMG_Init Fail";
+        throw "IMG_Init exception";
     }
 
     return true;
