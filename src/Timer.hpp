@@ -46,7 +46,7 @@ public:
     bool isPaused();
 
     /// Returns the whole timer's difference in milisseconds.
-    //    @note If the timer's not started, will return 0.
+    /// @note If the timer's not started, will return 0.
     uint32_t delta();
 
     /// Returns the milisseconds part of the timer's difference.

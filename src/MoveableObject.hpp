@@ -1,7 +1,6 @@
 #ifndef MoveableObject_hpp
 #define MoveableObject_hpp
 
-
 /// \brief An object that possesses speed and can "move" in the direction .
 ///
 /// This class defines characteristics to be inherited by something
@@ -10,7 +9,6 @@
 class MoveableObject
 {
 public:
-    
     enum Direction
     {
         UP = 0,

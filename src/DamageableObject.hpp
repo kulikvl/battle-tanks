@@ -16,8 +16,7 @@ public:
     void heal(int d);
 
     /// Deals a damage to the object's hitpoints.
-    //  @note Hitpoints are padded at zero (no negative
-    //        hitpoints allowed).
+    /// @note Hitpoints are padded at zero (no negative hitpoints allowed).
     void damage(int d);
 
     /// Tells if it have been destroyed.
@@ -31,8 +30,6 @@ public:
 protected:
     bool isAlive; ///< Is it alive?
     int  hp;      ///< Hitpoints.
-    
 };
-
 
 #endif /* DamageableObject_hpp */

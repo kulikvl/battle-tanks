@@ -12,7 +12,7 @@ LightTank::LightTank(const MazeSolver& mazeSolver) :
 void LightTank::selectPath()
 {
     path = mazeSolver.getLongestPath();
-    Utils::getGameCoords(path[currentPathTile], Window::TILE_WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,position.x, position.y);
+    Utils::getGameCoords(path[currentPathTile], Tile::WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,position.x, position.y);
     setDirection();
     
     Log::debug("Light tank spawned!\n");

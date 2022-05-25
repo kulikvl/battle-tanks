@@ -13,6 +13,7 @@
 #include "Player.hpp"
 #include "Sprite.hpp"
 #include "Config.hpp"
+#include "Utils.hpp"
 
 using namespace std;
 

@@ -1,10 +1,11 @@
 #ifndef Sprite_hpp
 #define Sprite_hpp
 
-#include <iostream>
 #include "SDL.hpp"
 #include "Color.hpp"
 #include "Window.hpp"
+
+using namespace std;
 
 /// \brief Shows a single image onscreen.
 ///
@@ -15,7 +16,7 @@
 ///
 class Sprite
 {
-private:    
+private:
     /// SDL's internal thingy that holds the image data.
     SDL_Texture* image;
 
@@ -29,7 +30,7 @@ private:
     
 public:
     /// Creates and loads a new sprite from `filename` on main window.
-    Sprite(std::string filename, int atlasIndex = -1, bool createCopyOfImage = false);
+    Sprite(string filename, int atlasIndex = -1, bool createCopyOfImage = false);
     
     /// Places the sprite on `x` and `y` of it's `window`.
     ///

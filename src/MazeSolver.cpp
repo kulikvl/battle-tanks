@@ -1,5 +1,4 @@
 #include "MazeSolver.hpp"
-#include "Utils.hpp"
 
 MazeSolver::MazeSolver(const vector<shared_ptr<Tile>>& roadTiles)
 {
@@ -7,11 +6,9 @@ MazeSolver::MazeSolver(const vector<shared_ptr<Tile>>& roadTiles)
     
     for (size_t i = 0; i < roadTiles.size(); ++i)
     {
-        
-        if (roadTiles[i]->getType() == TileType::ENTRY) startCoordinate = Utils::getMatrixCoords(roadTiles[i]->getX(), roadTiles[i]->getY(), Window::TILE_WIDTH);
-        else if (roadTiles[i]->getType() == TileType::EXIT) endCoordinate = Utils::getMatrixCoords(roadTiles[i]->getX(), roadTiles[i]->getY(), Window::TILE_WIDTH);
-        
-        roadSet.insert(Utils::getMatrixCoords(roadTiles[i]->getX(), roadTiles[i]->getY(), Window::TILE_WIDTH));
+        if (roadTiles[i]->getType() == Tile::Type::ENTRY) startCoordinate = Utils::getMatrixCoords(roadTiles[i]->getX(), roadTiles[i]->getY(), Tile::WIDTH);
+        else if (roadTiles[i]->getType() == Tile::Type::EXIT) endCoordinate = Utils::getMatrixCoords(roadTiles[i]->getX(), roadTiles[i]->getY(), Tile::WIDTH);
+        roadSet.insert(Utils::getMatrixCoords(roadTiles[i]->getX(), roadTiles[i]->getY(), Tile::WIDTH));
     }
 
     grid.resize(8);
@@ -32,11 +29,13 @@ MazeSolver::MazeSolver(const vector<shared_ptr<Tile>>& roadTiles)
         }
     }
     
-    
     solveGridBFS();
-    printGrid();
+    
+    stringstream s;
+    printGrid(s);
+    Log::debug(s.str());
+    
     printAllSolutions();
-
 }
 
 MazeSolver::MazeSolver(const vector<vector<int> >& grid, const string& startCoordinate, const string& endCoordinate, bool isSubMaze)
@@ -47,39 +46,46 @@ MazeSolver::MazeSolver(const vector<vector<int> >& grid, const string& startCoor
     this->isSubMaze = isSubMaze;
 }
 
-void MazeSolver::printGrid() const  {
-    cout << "\nMAZE:\n";
+void MazeSolver::printGrid(ostream& output) const  {
+    output << "\nMAZE:\n";
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
-            if (coordinateToString(i, j) == startCoordinate) cout << "S ";
-            else if (coordinateToString(i, j) == endCoordinate) cout << "E ";
-            else cout<<(grid[i][j] == 1 ? '!' : '_')<<' ';
+            if (coordinateToString(i, j) == startCoordinate) output << "S ";
+            else if (coordinateToString(i, j) == endCoordinate) output << "E ";
+            else output<<(grid[i][j] == 1 ? '!' : '_')<<' ';
         }
-        cout << endl;
-    } cout << endl;
+        output << endl;
+    }
 }
 
-void MazeSolver::printSolutionGrid(const vector<string>& path) const {
+void MazeSolver::printSolutionGrid(const vector<string>& path, ostream& output) const {
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
             if(find(path.begin(), path.end(), coordinateToString(i, j)) == path.end()) {
-                cout<<(grid[i][j] == 1 ? '!' : '_')<< ' ';
+                output<<(grid[i][j] == 1 ? '!' : '_')<< ' ';
             } else {
-                cout<<"* ";
+                output<<"* ";
             }
         }
-        cout<<endl;
+        output<<endl;
     }
 }
 
 void MazeSolver::printAllSolutions() const
 {
-    cout << "SHORTEST PATH: " << endl;
-    printSolutionGrid(shortestPath);
-    cout<<"STEPS: "<<shortestPath.size()<<endl;
-    cout << "\nLONGEST PATH: " << endl;
-    printSolutionGrid(longestPath);
-    cout<<"STEPS: "<<longestPath.size()<<endl << endl;
+    stringstream s;
+    
+    printSolutionGrid(shortestPath, s);
+    Log::debug("\nSHORTEST PATH: \n" + s.str());
+    
+    Log::debug("STEPS: " + to_string(shortestPath.size()) + "\n");
+    
+    s.str("");
+    
+    printSolutionGrid(longestPath, s);
+    Log::debug("\nLONGEST PATH: \n" + s.str());
+    
+    Log::debug("STEPS: " + to_string(longestPath.size()) + "\n");
 }
 
 void MazeSolver::solveGridBFS()

@@ -5,25 +5,31 @@
 #include "GameObject.hpp"
 #include "Sprite.hpp"
 
-enum TileType
-{
-    WALL = 0,
-    ROAD = 1,
-    ENTRY = 2,
-    EXIT = 3,
-    TURRET = 4,
-    TURRET_SELECT = 5,
-    OUTER = 6,
-};
-
-/// \brief Simple class for representing tile
-/// Tile has sprite, it's type, coords and inherited characteristics
+/// \brief Simple class for representing tile.
+///
+/// Tile has sprite, it's type, coords and inherited characteristics from GameObject
 /// 
 class Tile : public GameObject
 {
+public:
+    /// Width of the tile in the game.
+    /// @note *Every tile
+    static const int WIDTH = 80;
+    
+    enum Type
+    {
+        WALL = 0,
+        ROAD = 1,
+        ENTRY = 2,
+        EXIT = 3,
+        TURRET = 4,
+        TURRET_SELECT = 5,
+        OUTER = 6,
+    };
+    
 protected:
     /// Type of the tile.
-    TileType type;
+    Type type;
     
     /// Image.
     Sprite sprite;
@@ -32,13 +38,13 @@ protected:
     friend class TileManager;
     
 public:
-    Tile(int x, int y, TileType type);
+    Tile(int x, int y, Type type);
     
     virtual void update() override;
     
     virtual void render() override;
     
-    TileType getType();
+    Tile::Type getType();
     
 };
 

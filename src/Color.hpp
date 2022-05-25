@@ -4,10 +4,11 @@
 #include <stdint.h> // uint8_t
 #include <string>
 
+using namespace std;
+
 /// \brief General, platform-independent way to represent RGBA colors.
 ///
 /// It is a wrapper over SDL2's colors.
-/// As you can see, it can easily be used everywhere.
 ///
 class Color
 {
@@ -32,7 +33,7 @@ public:
     /// Creates a opaque color based on a color name.
     ///
     /// You know, "red", "black", "cyan"...
-    Color(std::string colorName);
+    Color(const string& colorName);
 
     /// Adds the RGB values of two colors.
     ///
@@ -45,6 +46,7 @@ public:
     ///
     /// @note If the alpha value is different, defaults to opacque.
     /// @note If the value is out of range, it's padded.
+    ///
     Color operator-(const Color& color) const;
 
     /// Tests if two RGBA colors are completely equal.

@@ -1,33 +1,34 @@
 #include "DamageableObject.hpp"
-#include "Log.hpp"
-#include <string>
-
-using namespace std;
 
 DamageableObject::DamageableObject(int initialHp):
     isAlive(true),
     hp(initialHp)
-{ }
+{
+}
+
 int DamageableObject::getHitpoints()
 {
-    return this->hp;
+    return hp;
 }
+
 bool DamageableObject::isDead()
 {
-    return !(this->isAlive);
+    return !isAlive;
 }
+
 void DamageableObject::heal(int d)
 {
-    this->hp += d;
+    hp += d;
 }
+
 void DamageableObject::damage(int d)
 {
-    this->hp -= d;
+    hp -= d;
     
-    if (this->hp <= 0)
+    if (hp <= 0)
     {
-        this->hp = 0;
-        this->isAlive = false;
+        hp = 0;
+        isAlive = false;
         destroy();
     }
 }

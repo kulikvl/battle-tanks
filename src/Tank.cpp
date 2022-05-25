@@ -16,8 +16,8 @@ void Tank::setDirection()
 {
     float x1, y1;
     float x2, y2;
-    Utils::getGameCoords(path[currentPathTile], Window::TILE_WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,x1, y1);
-    Utils::getGameCoords(path[currentPathTile + 1], Window::TILE_WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,x2, y2);
+    Utils::getGameCoords(path[currentPathTile], Tile::WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,x1, y1);
+    Utils::getGameCoords(path[currentPathTile + 1], Tile::WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,x2, y2);
     if (y1 == y2 && x2 > x1) direction = Direction::RIGHT;
     else if (y1 == y2 && x2 < x1) direction = Direction::LEFT;
     else if (y1 < y2 && x2 == x1) direction = Direction::DOWN;
@@ -27,7 +27,7 @@ void Tank::setDirection()
 void Tank::move()
 {
     float x2, y2;
-    Utils::getGameCoords(path[currentPathTile + 1], Window::TILE_WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES, x2, y2);
+    Utils::getGameCoords(path[currentPathTile + 1], Tile::WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES, x2, y2);
     
     /* Change direction */
     if ( (direction == Direction::RIGHT && Utils::areEqual(position.x, x2) ) ||
@@ -86,8 +86,8 @@ void Tank::render()
     else
     {
         float x(0.0f), y(0.0f), d(0.0f);
-        x = getX() + Window::TILE_WIDTH / 2;
-        y = getY() + Window::TILE_WIDTH / 2;
+        x = getX() + Tile::WIDTH / 2;
+        y = getY() + Tile::WIDTH / 2;
         part.draw(x, y, d);
     }
 }

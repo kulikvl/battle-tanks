@@ -6,12 +6,10 @@ TileManager::TileManager()
     fill();
 }
 
-vector<int> TileManager::readMap(const string& inFileName)
+vector<int> TileManager::readMap(string inFileName)
 {
-    /* Open the map */
     ifstream inputFile(inFileName);
     
-    /* If the map could not be loaded */
     if ( inputFile.fail() )
     {
         throw runtime_error("Failed to open the map!");
@@ -26,13 +24,11 @@ vector<int> TileManager::readMap(const string& inFileName)
         
         inputFile >> tileType;
         
-        /* If there was a problem in reading map */
         if ( inputFile.fail() )
         {
             throw runtime_error("Failed while reading the map!");
         }
         
-        /* Input check */
         if (tileType < 0 || tileType >= TILE_SPRITES )
         {
             throw runtime_error("Wrong data faced while reading the map! Number should be [0," + to_string(TILE_SPRITES) + "]");
@@ -55,36 +51,36 @@ void TileManager::fill()
     /* Create menu tiles */
     for (int i = 0; i < MENU_TILES; ++i)
     {
-        tiles[i] = make_shared<Tile>(x, y, TileType::OUTER);
+        tiles[i] = make_shared<Tile>(x, y, Tile::Type::OUTER);
         
-        x += Window::TILE_WIDTH;
+        x += Tile::WIDTH;
         
-        if (x >= ROW_TILES * Window::TILE_WIDTH)
+        if (x >= ROW_TILES * Tile::WIDTH)
         {
             x = 0;
-            y += Window::TILE_WIDTH;
+            y += Tile::WIDTH;
         }
     }
     
     /* Create game tiles */
     for (int i = 0; i < GAME_TILES; ++i)
     {
-        if ( (TileType)mapData[i] == TileType::TURRET )
+        if ( (Tile::Type) mapData[i] == Tile::Type::TURRET )
         {
-            tiles[MENU_TILES + i] = make_shared<TileTurret>(x, y, (TileType) mapData[i]);
+            tiles[MENU_TILES + i] = make_shared<TileTurret>(x, y, (Tile::Type) mapData[i]);
         }
         else
         {
-            tiles[MENU_TILES + i] = make_shared<Tile>(x, y, (TileType) mapData[i]);
+            tiles[MENU_TILES + i] = make_shared<Tile>(x, y, (Tile::Type) mapData[i]);
         }
        
         
-        x += Window::TILE_WIDTH;
+        x += Tile::WIDTH;
         
-        if (x >= ROW_TILES * Window::TILE_WIDTH)
+        if (x >= ROW_TILES * Tile::WIDTH)
         {
             x = 0;
-            y += Window::TILE_WIDTH;
+            y += Tile::WIDTH;
         }
     }
     
@@ -107,9 +103,9 @@ void TileManager::update()
     }
 }
 
-vector<shared_ptr<Tile>> TileManager::queryTilesOfTypes(const vector<TileType>& types)
+vector<shared_ptr<Tile> > TileManager::queryTilesOfTypes(const vector<Tile::Type>& types)
 {
-    vector<shared_ptr<Tile>> result;
+    vector<shared_ptr<Tile> > result;
     
     for (int i = MENU_TILES; i < TOTAL_TILES; ++i)
     {

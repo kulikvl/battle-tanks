@@ -1,6 +1,6 @@
 #include "Tile.hpp"
 
-Tile::Tile(int x, int y, TileType type) :
+Tile::Tile(int x, int y, Type type) :
     GameObject(x,y),
     type(type),
     sprite("Tiles.png", (int)type, false)
@@ -17,7 +17,7 @@ void Tile::render()
     sprite.render(getX(), getY());
 }
 
-TileType Tile::getType()
+Tile::Type Tile::getType()
 {
     return type;
 }

@@ -15,7 +15,7 @@ void MediumTank::selectPath()
     if (Utils::Random::boolean() == true) path = mazeSolver.getLongestPath();
     else path = mazeSolver.getShortestPath();
     
-    Utils::getGameCoords(path[currentPathTile], Window::TILE_WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,position.x, position.y);
+    Utils::getGameCoords(path[currentPathTile], Tile::WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,position.x, position.y);
     setDirection();
     
     Log::debug("Medium tank spawned!\n");

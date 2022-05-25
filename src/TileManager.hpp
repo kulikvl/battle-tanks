@@ -10,7 +10,7 @@
 using namespace std;
 
 /// \brief Class for managing and filling in tiles in the game.
-/// Can read map from the file and then generate a draw tiles to the game screen.
+/// Can read map from the file and then generate and draw tiles to the game screen.
 class TileManager
 {
 public:
@@ -21,15 +21,14 @@ public:
     static const int TILE_SPRITES = 7;
     
 private:
-    
-    /// All the tiles.
+    /// All the tiles on the screen.
     shared_ptr<Tile> tiles[TOTAL_TILES];
     
     /// Fill the tiles to the screen.
     void fill();
     
     /// Read a map from the file.
-    vector<int> readMap(const string& inFileName);
+    vector<int> readMap(string inFileName);
     
 public:
     TileManager();
@@ -41,7 +40,7 @@ public:
     void render();
     
     /// Query all tiles of the specified types.
-    vector<shared_ptr<Tile>> queryTilesOfTypes(const vector<TileType>& types);
+    vector<shared_ptr<Tile> > queryTilesOfTypes(const vector<Tile::Type>& types);
 };
 
 #endif /* TileManager_hpp */

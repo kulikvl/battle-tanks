@@ -21,20 +21,20 @@ using namespace std;
 class Window
 {
 private:
-    /// background color
+    /// Background color
     Color bg_color;
     
-    /// all textures used in the game
+    /// All textures used in the game
     map<string, vector<SDL_Texture*> > textures;
     
 public:
     /// Initializes the program's window with *width*, *height*
     /// and the text that should appear on the program's window
     /// (*title*).
-    Window(unsigned int width, unsigned int height, std::string title = "Unnamed");
+    Window(unsigned int width, unsigned int height, string title = "Unnamed");
 
     /// Frees resources
-    virtual ~Window();
+    ~Window();
 
     /// Destroys everything on the window and itself.
     /// Can be recreated with `Window::resize`.
@@ -42,7 +42,8 @@ public:
 
     /// Destroys everything on the window and itself.
     /// Can be recreated with `Window::resize`.
-    SDL_Texture* loadImage(std::string filename, bool createCopyOfTexture = false);
+    /// \param[in] createCopyOfTexture if true, creates a copy and pushes it to the vector of the same textures (needed for colorkeying)
+    SDL_Texture* loadImage(string filename, bool createCopyOfTexture = false);
 
     /// Effectively draws everything that's onscreen.
     /// @note Need to be called constantly.
@@ -64,10 +65,6 @@ public:
 
     /// SDL's internal data structure to which we render textures.
     SDL_Renderer* renderer;
-    
-    /// Width of the tile in the game
-    static const int TILE_WIDTH = 80;
-
 };
 
 

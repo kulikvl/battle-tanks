@@ -56,7 +56,7 @@ void Turret::findTargetTank(vector<shared_ptr<Tank> >& tanks)
     if (targetTank != nullptr)
     {
         /* check if current target tank is still in active radius */
-        if (!targetTank->isDead())
+        if (!targetTank->isDead()) // TODO: IF DEAD OR!! FINISH (BUG)
         {
             float distToTargetTank = sqrt( (targetTank->getX() - getX()) * (targetTank->getX() - getX()) + (targetTank->getY() - getY()) * (targetTank->getY() - getY()) );
             

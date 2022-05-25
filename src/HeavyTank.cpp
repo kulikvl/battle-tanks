@@ -12,7 +12,7 @@ HeavyTank::HeavyTank(const MazeSolver& mazeSolver) :
 void HeavyTank::selectPath()
 {
     path = mazeSolver.getShortestPath();
-    Utils::getGameCoords(path[currentPathTile], Window::TILE_WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,position.x, position.y);
+    Utils::getGameCoords(path[currentPathTile], Tile::WIDTH, TileManager::ROW_TILES / TileManager::MENU_TILES ,position.x, position.y);
     setDirection();
     
     Log::debug("Heavy tank spawned!\n");

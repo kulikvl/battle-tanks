@@ -17,8 +17,8 @@ void Smoky::render()
     if (targetTank != nullptr)
     {
         float x(0.0f), y(0.0f), d(0.0f);
-        x = targetTank->getX() + Window::TILE_WIDTH / 2;
-        y = targetTank->getY() + Window::TILE_WIDTH / 2;
+        x = targetTank->getX() + Tile::WIDTH / 2;
+        y = targetTank->getY() + Tile::WIDTH / 2;
         partExplosion.draw(x, y, d);
         
         getCoordsOfGunpoint(x, y, d);

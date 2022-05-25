@@ -1,15 +1,17 @@
 #ifndef MazeSolver_hpp
 #define MazeSolver_hpp
 
-#include <iostream>
 #include <functional>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <map>
 #include <set>
 #include <queue>
 
 #include "Tile.hpp"
+#include "Log.hpp"
+#include "Utils.hpp"
 
 using namespace std;
 
@@ -46,9 +48,9 @@ public:
     
     void solveGridBFS();
     
-    void printGrid() const;
+    void printGrid(ostream& out) const;
     
-    void printSolutionGrid(const vector<string>& path) const;
+    void printSolutionGrid(const vector<string>& path, ostream& out) const;
     
     void printAllSolutions() const;
 

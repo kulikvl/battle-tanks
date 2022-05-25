@@ -27,7 +27,7 @@ namespace Utils
 
     std::string getMatrixCoords(int x, int y, int blockWidth);
     void        getGameCoords(const std::string& strCoords, int blockWidth, int offsetFromTop, float& outX, float& outY);
-    bool areEqual(float a, float b);
+    bool        areEqual(float a, float b);
 };
 
 #endif /* Utils_hpp */

@@ -16,7 +16,7 @@ Color::Color(int color_mask)
 Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
     : red(r), green(g), blue(b), alpha(a)
 { }
-Color::Color(std::string colorName)
+Color::Color(const string& colorName)
 {
     uint8_t r(0), g(0), b(0);
 

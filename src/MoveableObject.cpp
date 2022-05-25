@@ -1,6 +1,8 @@
 #include "MoveableObject.hpp"
 
-MoveableObject::MoveableObject(float vel) : velocity(vel), initialVelocity(vel)
+MoveableObject::MoveableObject(float vel) :
+    velocity(vel),
+    initialVelocity(vel)
 {
     if (vel == 0)
     {
@@ -14,37 +16,37 @@ MoveableObject::MoveableObject(float vel) : velocity(vel), initialVelocity(vel)
 
 void MoveableObject::slow(float v)
 {
-    this->velocity -= v;
+    velocity -= v;
     
-    if (this->velocity <= 0)
+    if (velocity <= 0)
     {
-        this->velocity = 0;
-        this->isMoving = false;
+        velocity = 0;
+        isMoving = false;
     }
 }
 
 void MoveableObject::accelerate(float v)
 {
-    this->velocity += v;
-    this->isMoving = true;
+    velocity += v;
+    isMoving = true;
 }
 
 bool MoveableObject::isIdle()
 {
-    return !(this->isMoving);
+    return !isMoving;
 }
 
 float MoveableObject::getCurrentVelocity()
 {
-    return this->velocity;
+    return velocity;
 }
 
 float MoveableObject::getInitialVelocity()
 {
-    return this->initialVelocity;
+    return initialVelocity;
 }
 
 void MoveableObject::setInitialVelocity()
 {
-    this->velocity = this->initialVelocity;
+    velocity = initialVelocity;
 }

@@ -10,10 +10,12 @@ void TimerCounter::setDelay(uint32_t delay)
     this->delay = delay;
     this->done  = false;
 }
+
 void TimerCounter::startCounting()
 {
     this->restart();
 }
+
 bool TimerCounter::isDone()
 {
     if (this->done)             // Previously finished

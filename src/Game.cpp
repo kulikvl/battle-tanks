@@ -1,20 +1,14 @@
-#include <cstdlib>              // srand()
-#include <ctime>                // time()
-#include <random>
 #include "Game.hpp"
-
-#include "Utils.hpp"
 
 Game::Game() :
     tileManager(),
-    mazeSolver(tileManager.queryTilesOfTypes({TileType::ROAD, TileType::ENTRY, TileType::EXIT})),
+    mazeSolver(tileManager.queryTilesOfTypes({Tile::Type::ROAD, Tile::Type::ENTRY, Tile::Type::EXIT})),
     tankManager(mazeSolver),
     turretManager(tankManager.getTanks()),
-    buttonManager(tileManager.queryTilesOfTypes({TileType::TURRET}), &turretManager),
+    buttonManager(tileManager.queryTilesOfTypes({Tile::Type::TURRET}), &turretManager),
     tabManager(),
     state(State::PLAYING),
     endScreenImage("EndScreen.png")
-    
 {
     Utils::Random::seed();
 }
@@ -38,7 +32,6 @@ void Game::run()
             
             if (state == State::PLAYING)
                 buttonManager.handleEvent(&e);
-                
         }
         
         if (state == State::PLAYING)
