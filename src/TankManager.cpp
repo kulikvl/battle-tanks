@@ -3,7 +3,7 @@
 #include "Log.hpp"
 #include "Config.hpp"
 
-TankManager::TankManager(Window* window, const MazeSolver& mazeSolver) : window(window), mazeSolver(mazeSolver), timer(3000)
+TankManager::TankManager(const MazeSolver& mazeSolver) : mazeSolver(mazeSolver), timer(3000)
 {
     timer.startCounting();
 }
@@ -14,13 +14,13 @@ void TankManager::generate()
     
     switch (type) {
         case TankType::LIGHT:
-            tanks.push_back(make_shared<LightTank>(window, mazeSolver));
+            tanks.push_back(make_shared<LightTank>(mazeSolver));
             break;
         case TankType::MEDIUM:
-            tanks.push_back(make_shared<MediumTank>(window, mazeSolver));
+            tanks.push_back(make_shared<MediumTank>(mazeSolver));
             break;
         case TankType::HEAVY:
-            tanks.push_back(make_shared<HeavyTank>(window, mazeSolver));
+            tanks.push_back(make_shared<HeavyTank>(mazeSolver));
             break;
     }
 }

@@ -1,5 +1,7 @@
 #include "SDL.hpp"
 
+Window SDL::window = Window(640, 720, "Tower defense");
+
 bool SDL::init()
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0 )

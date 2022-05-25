@@ -5,15 +5,18 @@
 #include <SDL2_image/SDL_image.h>
 
 #include "Log.hpp"
+#include "Window.hpp"
 
 /// \brief Wrapper class on basic SDL2 calls.
 ///
 /// This simply initializes and finishes SDL2.
+/// Also it contains the main window, on which the whole game is displayed
 ///
-namespace SDL
+struct SDL
 {
-    bool init();
-    void exit();
+    static bool init();
+    static void exit();
+    static Window window;
 };
 
 #endif /* SDL_hpp */

@@ -3,7 +3,7 @@
 class ParticleShotSmoke : public ParticleEffect
 {
 public:
-    ParticleShotSmoke(Window* window) : ParticleEffect(window)
+    ParticleShotSmoke()
     {
         initEffect();
     }

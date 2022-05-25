@@ -32,14 +32,13 @@ public:
     };
     
 private:
-    Window* window;
     const MazeSolver& mazeSolver;
     vector<shared_ptr<Tank> > tanks;
     TimerCounter timer;
     
 
 public:
-    TankManager(Window* window, const MazeSolver& mazeSolver);
+    TankManager(const MazeSolver& mazeSolver);
     
     void generate();
     

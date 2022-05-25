@@ -17,8 +17,6 @@
 class Tank : public GameObject, public MoveableObject, public DamageableObject
 {
 protected:
-    Window* window;
-    
     Sprite sprite;
     
     const MazeSolver& mazeSolver;
@@ -38,7 +36,7 @@ protected:
     TimerCounter timerAfterDeath;
 
 public:
-    Tank(Window* window, const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp);
+    Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp);
     
     virtual void update() override;
     

@@ -13,8 +13,6 @@
 class Turret : public GameObject, public ShootableObject
 {
 protected:
-    Window* window;
-    
     Sprite sprite;
     
     Tank* targetTank;
@@ -30,7 +28,7 @@ protected:
     bool effectsAppliedOnTargetTank = false;
 
 public:
-    Turret(Window* window, int x, int y, const Sprite& sprite, int damage, float reload, float radius);
+    Turret(int x, int y, const Sprite& sprite, int damage, float reload, float radius);
     
     virtual void update() override ;
     

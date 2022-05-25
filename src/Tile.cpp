@@ -1,10 +1,9 @@
 #include "Tile.hpp"
 
-Tile::Tile(Window* window, int x, int y, TileType type) :
-    window(window),
+Tile::Tile(int x, int y, TileType type) :
     GameObject(x,y),
     type(type),
-    sprite(window, "Tiles.png", (int)type, false)
+    sprite("Tiles.png", (int)type, false)
 {
 }
 

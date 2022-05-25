@@ -4,7 +4,7 @@
 class ParticleFire : public ParticleEffect
 {
 public:
-    ParticleFire(Window* window) : ParticleEffect(window)
+    ParticleFire()
     {
         initEffect();
     }

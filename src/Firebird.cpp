@@ -4,11 +4,11 @@
 #include "Utils.hpp"
 #include "Window.hpp"
 
-Firebird::Firebird(Window* window, int x, int y) :
-    Turret(window, x, y, Sprite(window, "Turrets.png", 0),
+Firebird::Firebird(int x, int y) :
+    Turret(x, y, Sprite("Turrets.png", 0),
            Config::getInt("firebird_damage", 2),
            Config::getFloat("firebird_reload", 2.0f),
-           Config::getFloat("firebird_radius", 200.0f )), part(window), redFactor(100)
+           Config::getFloat("firebird_radius", 200.0f )), part(), redFactor(100)
     
 {
 }

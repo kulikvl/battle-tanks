@@ -11,7 +11,7 @@ class LightTank : public Tank
 private:
     virtual void selectPath() override;
 public:
-    LightTank(Window* window, const MazeSolver& mazeSolver);
+    LightTank(const MazeSolver& mazeSolver);
 };
 
 #endif /* LightTank_hpp */

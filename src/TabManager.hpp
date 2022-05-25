@@ -16,12 +16,11 @@ using namespace std;
 class TabManager : public GameObject
 {
 private:
-    Window* window;
     array<unique_ptr<Coin>, 17> coins;
     array<unique_ptr<Heart>, 3> hearts;
     
 public:
-    TabManager(Window* window);
+    TabManager();
     
     virtual void update() override;
     

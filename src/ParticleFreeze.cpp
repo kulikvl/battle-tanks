@@ -3,7 +3,7 @@
 class ParticleFreeze : public ParticleEffect
 {
 public:
-    ParticleFreeze(Window* window) : ParticleEffect(window)
+    ParticleFreeze()
     {
         initEffect();
     }

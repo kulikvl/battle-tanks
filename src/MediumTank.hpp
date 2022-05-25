@@ -11,7 +11,7 @@ class MediumTank : public Tank
 private:
     virtual void selectPath() override;
 public:
-    MediumTank(Window* window, const MazeSolver& mazeSolver);
+    MediumTank(const MazeSolver& mazeSolver);
 };
 
 #endif /* MediumTank_hpp */

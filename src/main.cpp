@@ -1,10 +1,7 @@
 #include "SDL.hpp"
 #include "Log.hpp"
-#include "Window.hpp"
-#include "Game.hpp"
 #include "Config.hpp"
-
-#include <exception>
+#include "Game.hpp"
 
 int main(int argc, char* args[])
 {
@@ -16,9 +13,7 @@ int main(int argc, char* args[])
         
         SDL::init();
         
-        Window window(640, 720, "Tower defense");
-        
-        Game game(&window);
+        Game game;
         
         game.run();
         

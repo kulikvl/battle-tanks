@@ -2,31 +2,21 @@
 #include <ctime>                // time()
 #include <random>
 #include "Game.hpp"
-#include "SDL.hpp"
-#include "Log.hpp"
-#include "Window.hpp"
-#include "TimerCounter.hpp"
-#include "LightTank.hpp"
-#include "Button.hpp"
 
 #include "Utils.hpp"
 
-Window* Game::mainWindow = nullptr;
-
-Game::Game(Window* window) :
-    window(window),
-    tileManager(window),
+Game::Game() :
+    tileManager(),
     mazeSolver(tileManager.queryTilesOfTypes({TileType::ROAD, TileType::ENTRY, TileType::EXIT})),
-    tankManager(window, mazeSolver),
-    turretManager(window, tankManager.getTanks()),
+    tankManager(mazeSolver),
+    turretManager(tankManager.getTanks()),
     buttonManager(tileManager.queryTilesOfTypes({TileType::TURRET}), &turretManager),
-    tabManager(window),
+    tabManager(),
     state(State::PLAYING),
-    endScreenImage(window, "EndScreen.png")
+    endScreenImage("EndScreen.png")
     
 {
     Utils::Random::seed();
-    Game::mainWindow = window;
 }
 
 void Game::run()
@@ -59,7 +49,7 @@ void Game::run()
             tabManager.update();
         }
        
-        window->clear();
+        SDL::window.clear();
         
         if (state == State::PLAYING)
         {
@@ -74,7 +64,7 @@ void Game::run()
             endScreenImage.render(0, 0);
         }
 
-        window->refresh();
+        SDL::window.refresh();
     }
 }
 

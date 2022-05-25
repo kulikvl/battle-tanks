@@ -29,12 +29,11 @@ public:
     };
     
 private:
-    Window* window;
     vector<shared_ptr<Turret> > turrets;
     vector<shared_ptr<Tank> >& tanks;
     
 public:
-    TurretManager(Window* window, vector<shared_ptr<Tank> >& tanks);
+    TurretManager(vector<shared_ptr<Tank> >& tanks);
 
     void update();
     

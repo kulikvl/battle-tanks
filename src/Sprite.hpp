@@ -15,10 +15,7 @@
 ///
 class Sprite
 {
-private:
-    /// The window on which this Sprite appears.
-    Window* window;
-    
+private:    
     /// SDL's internal thingy that holds the image data.
     SDL_Texture* image;
 
@@ -31,9 +28,7 @@ private:
     Color color;
     
 public:
-    /// Creates and loads a new sprite from `filename` on `window`.
-    Sprite(Window* window, std::string filename, int atlasIndex = -1, bool createCopyOfImage = false);
-    
+    /// Creates and loads a new sprite from `filename` on main window.
     Sprite(std::string filename, int atlasIndex = -1, bool createCopyOfImage = false);
     
     /// Places the sprite on `x` and `y` of it's `window`.

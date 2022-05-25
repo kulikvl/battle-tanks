@@ -10,9 +10,9 @@ private:
 public:
     bool show = false;
     
-    Coin(Window* window,  int x, int y) :
+    Coin( int x, int y) :
         GameObject(x,y),
-        image(window, "Tab.png", 0)
+        image("Tab.png", 0)
     {
     
     }

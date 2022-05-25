@@ -1,56 +1,61 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#include "Window.hpp"
+#include <vector>
+#include <functional>
+
 #include "TileManager.hpp"
 #include "TankManager.hpp"
-#include "MazeSolver.hpp"
-#include "ButtonManager.hpp"
 #include "TurretManager.hpp"
+#include "ButtonManager.hpp"
 #include "TabManager.hpp"
+#include "MazeSolver.hpp"
 #include "Player.hpp"
 #include "Sprite.hpp"
 #include "Config.hpp"
 
-#include <vector>
-#include <functional>
-
 using namespace std;
 
-
-
-/// \brief Class for managing general game logic.
+/// \brief Class for managing general game logic a main game loop.
 /// Class, in which the main game loop is running.
-/// It checks for input, updates, clears and renders the screen.
+/// It checks for input, updates, clears and renders the screen every frame.
 class Game
 {
-private:
-    /// The window on which the game is displayed.
-    Window* window;
+public:
+    /// Game state.
+    enum State
+    {
+        PLAYING,
+        ENDSCREEN
+    };
     
-    /// The tile manager to organise and create tiles.
+private:
+    /// Organise and create tiles.
     TileManager tileManager;
     
-    /// The tank manager to organise and create tanks.
+    /// Organise and create tanks.
     TankManager tankManager;
     
-    /// The turret manager to organise and install turrets.
+    /// Organise and install turrets.
     TurretManager turretManager;
     
-    /// The button manager to  control buttons.
+    /// Control buttons.
     ButtonManager buttonManager;
     
-    /// Maze solver to find all paths in the maze.
+    /// Find all paths in the maze (BFS).
     MazeSolver mazeSolver;
     
+    /// Organise tab menu and buttons.
     TabManager tabManager;
+    
+    /// Current game state.
+    State state;
     
     Sprite endScreenImage;
     
-
 public:
     /// Initializes pretty much everything.
-    Game(Window* window);
+    Game();
 
     /// Main entry point and game loop.
     ///
@@ -60,16 +65,7 @@ public:
     /// If we leave this method, the game quits, as seen on
     /// *main.cpp*.
     void run();
-    
-    enum State
-    {
-        PLAYING,
-        ENDSCREEN
-    };
-    
-    State state;
-    
-    static Window* mainWindow;
+
 };
 
 #endif /* Game_hpp */

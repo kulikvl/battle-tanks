@@ -16,7 +16,7 @@ private:
     
 public:
 
-    Firebird(Window* window, int x, int y);
+    Firebird(int x, int y);
 
     virtual void update() override;
     

@@ -2,13 +2,12 @@
 #include "Utils.hpp"
 #include "TileManager.hpp"
 
-Tank::Tank(Window* window, const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp) :
-    window(window),
+Tank::Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp) :
     mazeSolver(mazeSolver),
     sprite(sprite),
     MoveableObject(velocity),
     DamageableObject(hp),
-    part(window),
+    part(),
     timerAfterDeath(2000)
 {
 }

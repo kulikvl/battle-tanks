@@ -1,7 +1,7 @@
 #include "TileManager.hpp"
 #include "TileTurret.hpp"
 
-TileManager::TileManager(Window* window) : window(window)
+TileManager::TileManager() 
 {
     fill();
 }
@@ -55,7 +55,7 @@ void TileManager::fill()
     /* Create menu tiles */
     for (int i = 0; i < MENU_TILES; ++i)
     {
-        tiles[i] = make_shared<Tile>(window, x, y, TileType::OUTER);
+        tiles[i] = make_shared<Tile>(x, y, TileType::OUTER);
         
         x += Window::TILE_WIDTH;
         
@@ -71,11 +71,11 @@ void TileManager::fill()
     {
         if ( (TileType)mapData[i] == TileType::TURRET )
         {
-            tiles[MENU_TILES + i] = make_shared<TileTurret>(window, x, y, (TileType) mapData[i]);
+            tiles[MENU_TILES + i] = make_shared<TileTurret>(x, y, (TileType) mapData[i]);
         }
         else
         {
-            tiles[MENU_TILES + i] = make_shared<Tile>(window, x, y, (TileType) mapData[i]);
+            tiles[MENU_TILES + i] = make_shared<Tile>(x, y, (TileType) mapData[i]);
         }
        
         

@@ -22,9 +22,6 @@ enum TileType
 class Tile : public GameObject
 {
 protected:
-    /// The window on which the game is displayed.
-    Window* window;
-    
     /// Type of the tile.
     TileType type;
     
@@ -35,7 +32,7 @@ protected:
     friend class TileManager;
     
 public:
-    Tile(Window* window, int x, int y, TileType type);
+    Tile(int x, int y, TileType type);
     
     virtual void update() override;
     

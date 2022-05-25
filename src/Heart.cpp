@@ -12,10 +12,10 @@ private:
 public:
     bool isRed = true;
     
-    Heart(Window* window, int x, int y) :
+    Heart(int x, int y) :
         GameObject(x,y),
-        imageRedHeart(window, "Tab.png", 1),
-        imageBlackHeart(window, "Tab.png", 2)
+        imageRedHeart("Tab.png", 1),
+        imageBlackHeart("Tab.png", 2)
     {
         
     }

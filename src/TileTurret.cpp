@@ -1,7 +1,7 @@
 #include "TileTurret.hpp"
 
-TileTurret::TileTurret(Window* window, int x, int y, TileType type) :
-    Tile(window, x, y, type),
+TileTurret::TileTurret(int x, int y, TileType type) :
+    Tile(x, y, type),
     Button({x,y})
 {
 }
@@ -11,17 +11,17 @@ void TileTurret::update()
     if (hasTurret)
     {
         type = TileType::TURRET;
-        sprite = Sprite(window, "Tiles.png", (int)TileType::ROAD);
+        sprite = Sprite("Tiles.png", (int)TileType::ROAD);
     }
     else if (isSelected && type == TileType::TURRET)
     {
         type = TileType::TURRET_SELECT;
-        sprite = Sprite(window, "Tiles.png", (int)type);
+        sprite = Sprite("Tiles.png", (int)type);
     }
     else if (!isSelected && type == TileType::TURRET_SELECT)
     {
         type = TileType::TURRET;
-        sprite = Sprite(window, "Tiles.png", (int)type);
+        sprite = Sprite("Tiles.png", (int)type);
     }
 }
 

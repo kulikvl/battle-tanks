@@ -3,7 +3,7 @@
 class ParticleTankExplosion : public ParticleEffect
 {
 public:
-    ParticleTankExplosion(Window* window) : ParticleEffect(window)
+    ParticleTankExplosion()
     {
         initEffect();
     }

@@ -17,7 +17,7 @@ private:
     virtual void removeEffectsFromTargetTank() override;
     
 public:
-    Freeze(Window* window, int x, int y);
+    Freeze(int x, int y);
 
     virtual void update() override;
     

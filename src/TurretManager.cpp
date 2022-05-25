@@ -8,7 +8,7 @@
 
 using namespace std;
 
-TurretManager::TurretManager(Window* window, vector<shared_ptr<Tank> >& tanks) : window(window), tanks(tanks)
+TurretManager::TurretManager(vector<shared_ptr<Tank> >& tanks) : tanks(tanks)
 {
     
 }
@@ -62,13 +62,13 @@ void TurretManager::installTurret(TurretType type, TileTurret* tile)
         
         switch (type) {
             case TurretType::FIREBIRD:
-                turrets.push_back(make_shared<Firebird>(window, tile->getX(), tile->getY()));
+                turrets.push_back(make_shared<Firebird>(tile->getX(), tile->getY()));
                 break;
             case TurretType::FREEZE:
-                turrets.push_back(make_shared<Freeze>(window, tile->getX(), tile->getY()));
+                turrets.push_back(make_shared<Freeze>(tile->getX(), tile->getY()));
                 break;
             case TurretType::SMOKY:
-                turrets.push_back(make_shared<Smoky>(window, tile->getX(), tile->getY()));
+                turrets.push_back(make_shared<Smoky>(tile->getX(), tile->getY()));
                 break;
         }
         

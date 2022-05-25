@@ -17,7 +17,7 @@ private:
     
 public:
     
-    Smoky(Window* window, int x, int y);
+    Smoky(int x, int y);
     
     virtual void render() override;
 };

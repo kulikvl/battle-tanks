@@ -9,7 +9,7 @@
 class TileTurret : public Button, public Tile
 {
 public:
-    TileTurret(Window* window, int x, int y, TileType type);
+    TileTurret(int x, int y, TileType type);
     virtual void update() override;
     virtual void handleEvent( SDL_Event* e) override;
     bool hasTurret = false;

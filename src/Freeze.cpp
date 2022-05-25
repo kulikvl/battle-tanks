@@ -1,10 +1,10 @@
 #include "Freeze.hpp"
 
-Freeze::Freeze(Window* window, int x, int y) :
-    Turret(window, x, y, Sprite(window, "Turrets.png", 1),
+Freeze::Freeze(int x, int y) :
+    Turret(x, y, Sprite("Turrets.png", 1),
            Config::getInt("freeze_damage", 2),
            Config::getFloat("freeze_reload", 2.0f),
-           Config::getFloat("freeze_radius", 200.0f )), part(window), slowdownFactor(3.0f), blueFactor(100)
+           Config::getFloat("freeze_radius", 200.0f )), part(), slowdownFactor(3.0f), blueFactor(100)
 {
 }
 

@@ -4,7 +4,9 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "SDL.hpp"
+#include <SDL2/SDL.h>
+#include <SDL2_image/SDL_image.h>
+
 #include "Color.hpp"
 #include "Timer.hpp"
 
@@ -19,9 +21,11 @@ using namespace std;
 class Window
 {
 private:
-    Color bg_color; /// background color
+    /// background color
+    Color bg_color;
     
-    map<string, vector<SDL_Texture*> > textures; /// all textures used in the game
+    /// all textures used in the game
+    map<string, vector<SDL_Texture*> > textures;
     
 public:
     /// Initializes the program's window with *width*, *height*

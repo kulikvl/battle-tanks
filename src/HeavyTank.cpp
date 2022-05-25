@@ -3,8 +3,8 @@
 #include "Utils.hpp"
 #include "TileManager.hpp"
 
-HeavyTank::HeavyTank(Window* window, const MazeSolver& mazeSolver) :
-    Tank(window, mazeSolver, Sprite(window, "Tanks.png", 2, true), Config::getFloat("heavytank_velocity", 2.5f), Config::getInt("heavytank_hp", 6) )
+HeavyTank::HeavyTank(const MazeSolver& mazeSolver) :
+    Tank(mazeSolver, Sprite("Tanks.png", 2, true), Config::getFloat("heavytank_velocity", 2.5f), Config::getInt("heavytank_hp", 6) )
 {
     selectPath();
 }

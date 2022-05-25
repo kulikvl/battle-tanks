@@ -5,18 +5,18 @@
 #include <array>
 using namespace std;
 
-TabManager::TabManager(Window* window) : window(window)
+TabManager::TabManager()
 {
     for (size_t i = 0; i < coins.size(); ++i)
     {
-        coins[i] = std::make_unique<Coin>(window,i*20,0);
+        coins[i] = std::make_unique<Coin>(i*20,0);
     }
     
     const int offsetHeartTab = 400;
     
     for (size_t i = 0; i < hearts.size(); ++i)
     {
-        hearts[i] = std::make_unique<Heart>(window, offsetHeartTab + i*80, 0);
+        hearts[i] = std::make_unique<Heart>(offsetHeartTab + i*80, 0);
     }
 }
 

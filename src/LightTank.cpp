@@ -3,8 +3,8 @@
 #include "Utils.hpp"
 #include "TileManager.hpp"
 
-LightTank::LightTank(Window* window, const MazeSolver& mazeSolver) :
-    Tank(window, mazeSolver, Sprite(window, "Tanks.png", 0, true), Config::getFloat("lighttank_velocity", 2.5f), Config::getInt("lighttank_hp", 6) )
+LightTank::LightTank(const MazeSolver& mazeSolver) :
+    Tank(mazeSolver, Sprite("Tanks.png", 0, true), Config::getFloat("lighttank_velocity", 2.5f), Config::getInt("lighttank_hp", 6) )
 {
     selectPath();
 }

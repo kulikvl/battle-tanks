@@ -3,8 +3,7 @@
 #include "Utils.hpp"
 #include "Config.hpp"
 
-Turret::Turret(Window* window, int x, int y, const Sprite& sprite, int damage, float reload, float radius) :
-    window(window),
+Turret::Turret(int x, int y, const Sprite& sprite, int damage, float reload, float radius) :
     GameObject(x,y),
     sprite(sprite),
     ShootableObject(damage, reload, radius),

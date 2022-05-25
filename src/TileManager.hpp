@@ -21,8 +21,6 @@ public:
     static const int TILE_SPRITES = 7;
     
 private:
-    /// The window on which the game is displayed.
-    Window* window;
     
     /// All the tiles.
     shared_ptr<Tile> tiles[TOTAL_TILES];
@@ -34,7 +32,7 @@ private:
     vector<int> readMap(const string& inFileName);
     
 public:
-    TileManager(Window* window);
+    TileManager();
     
     /// Updates all tiles.
     void update();

@@ -1,22 +1,11 @@
 #include "Sprite.hpp"
 #include "Log.hpp"
 #include "Color.hpp"
-#include "Game.hpp"
+#include "SDL.hpp"
 
-Sprite::Sprite(Window* window, std::string filename, int atlasIndex, bool createCopyOfImage) : window(window), image(nullptr), width(0), height(0), atlasIndex(atlasIndex), color(255,255,255)
+Sprite::Sprite(std::string filename, int atlasIndex, bool createCopyOfImage) :  image(nullptr), width(0), height(0), atlasIndex(atlasIndex), color(255,255,255)
 {
-    this->image = window->loadImage(filename, createCopyOfImage);
-    
-    int w, h;
-    SDL_QueryTexture(image, nullptr, nullptr, &w, &h);
-
-    this->width  = w;
-    this->height = h;
-}
-
-Sprite::Sprite(std::string filename, int atlasIndex, bool createCopyOfImage) : window(window), image(nullptr), width(0), height(0), atlasIndex(atlasIndex), color(255,255,255)
-{
-    this->image = Game::mainWindow->loadImage(filename, createCopyOfImage);
+    this->image = SDL::window.loadImage(filename, createCopyOfImage);
     
     int w, h;
     SDL_QueryTexture(image, nullptr, nullptr, &w, &h);
@@ -31,14 +20,14 @@ void Sprite::render(float x, float y, float angle, SDL_FPoint* center, SDL_Rende
 
     if (atlasIndex >= 0)
     {
-        SDL_Rect clip {atlasIndex * Game::mainWindow->TILE_WIDTH, 0, Game::mainWindow->TILE_WIDTH, Game::mainWindow->TILE_WIDTH};
+        SDL_Rect clip {atlasIndex * SDL::window.TILE_WIDTH, 0, SDL::window.TILE_WIDTH, SDL::window.TILE_WIDTH};
         renderQuad.w = clip.w;
         renderQuad.h = clip.h;
-        SDL_RenderCopyExF( Game::mainWindow->renderer, image, &clip, &renderQuad, (double) angle, center, flip );
+        SDL_RenderCopyExF( SDL::window.renderer, image, &clip, &renderQuad, (double) angle, center, flip );
     }
     else
     {
-        SDL_RenderCopyExF( Game::mainWindow->renderer, image, nullptr, &renderQuad, (double) angle, center, flip );
+        SDL_RenderCopyExF( SDL::window.renderer, image, nullptr, &renderQuad, (double) angle, center, flip );
     }
 }
 
