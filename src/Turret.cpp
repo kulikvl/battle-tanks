@@ -1,7 +1,4 @@
 #include "Turret.hpp"
-#include "TimerCounter.hpp"
-#include "Utils.hpp"
-#include "Config.hpp"
 
 Turret::Turret(int x, int y, const Sprite& sprite, int damage, float reload, float radius) :
     GameObject(x,y),
@@ -21,7 +18,7 @@ void Turret::update()
         float A = sqrt( (targetTank->getY() - getY()) * (targetTank->getY() - getY()) );
         float C = distanceToTargetTank;
         float Cos = A / C;
-        rotation = acos(Cos) * 180.0f / PI;
+        rotation = acos(Cos) * 180.0f / M_PI;
         if (targetTank->getY() >= getY()) {
             rotation -= 180.0f;
             if (targetTank->getX() <= getX()) rotation *= -1.0;
@@ -55,26 +52,33 @@ void Turret::findTargetTank(vector<shared_ptr<Tank> >& tanks)
 {
     if (targetTank != nullptr)
     {
-        /* check if current target tank is still in active radius */
-        if (!targetTank->isDead()) // TODO: IF DEAD OR!! FINISH (BUG)
+        if (targetTank->isActive == false)
         {
-            float distToTargetTank = sqrt( (targetTank->getX() - getX()) * (targetTank->getX() - getX()) + (targetTank->getY() - getY()) * (targetTank->getY() - getY()) );
-            
-            if (distToTargetTank < radius)
+            targetTank = nullptr;
+        }
+        else
+        {
+            /* check if current target tank is still in active radius */
+            if (!targetTank->isDead())
             {
-                distanceToTargetTank = distToTargetTank;
-                return;
+                float distToTargetTank = sqrt( (targetTank->getX() - getX()) * (targetTank->getX() - getX()) + (targetTank->getY() - getY()) * (targetTank->getY() - getY()) );
+                
+                if (distToTargetTank < radius)
+                {
+                    distanceToTargetTank = distToTargetTank;
+                    return;
+                }
+                else
+                {
+                    removeEffectsFromTargetTank();
+                    targetTank = nullptr;
+                }
             }
             else
             {
                 removeEffectsFromTargetTank();
                 targetTank = nullptr;
             }
-        }
-        else
-        {
-            removeEffectsFromTargetTank();
-            targetTank = nullptr;
         }
     }
     
@@ -104,9 +108,10 @@ void Turret::getCoordsOfGunpoint(float& x, float& y, float& d)
      botLeft    - [-180, 90]
      */
     
-    /* For ease of understanding the code and taking into account the fact that the size of one block will not change,
+    /*
+     For ease of understanding the code and taking into account the fact that the size of one block will not change,
      we use constant numbers, where 40 is half the length of the block, 80 is the length of the block
-     TODO: change the code if the length of the block chages
+     WARNING: change the code if the length of the block chages
      */
     
     float degreesToAxisY = abs(rotation);
@@ -116,7 +121,8 @@ void Turret::getCoordsOfGunpoint(float& x, float& y, float& d)
         degreesToAxisY = 90.0f - degreesToAxisY;
     }
     
-    float tangens = tan(abs(degreesToAxisY) * PI / 180.0f);
+    
+    float tangens = tan(abs(degreesToAxisY) * M_PI / 180.0f);
     
     float xNormal = (40.0f * tangens * sqrt(tangens*tangens + 1)) / (tangens*tangens + 1);
     float yNormal = sqrt(40.0f * 40.0f - xNormal * xNormal);

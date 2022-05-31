@@ -1,11 +1,8 @@
 #include "Firebird.hpp"
-#include "iostream"
 #include <cmath>
-#include "Utils.hpp"
-#include "Window.hpp"
 
 Firebird::Firebird(int x, int y) :
-    Turret(x, y, Sprite("Turrets.png", 0),
+    Turret(x, y, Sprite("../assets/Turrets.png", 0),
            Config::getInt("firebird_damage", 2),
            Config::getFloat("firebird_reload", 2.0f),
            Config::getFloat("firebird_radius", 200.0f )), part(), redFactor(100)

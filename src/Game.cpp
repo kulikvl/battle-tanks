@@ -8,9 +8,10 @@ Game::Game() :
     buttonManager(tileManager.queryTilesOfTypes({Tile::Type::TURRET}), &turretManager),
     tabManager(),
     state(State::PLAYING),
-    endScreenImage("EndScreen.png")
+    endScreenImage("../assets/EndScreen.png")
 {
     Utils::Random::seed();
+    Player::coins = Config::getInt("start_coins", 5);
 }
 
 void Game::run()
@@ -21,6 +22,12 @@ void Game::run()
 
     while (!quit)
     {
+        if (Config::getBool("godmode", false) == true)
+        {
+            Player::hp    = 999;
+            Player::coins = 999;
+        }
+        
         if (Player::hp <= 0)
         {
             state = State::ENDSCREEN;
@@ -31,7 +38,9 @@ void Game::run()
             if (e.type == SDL_QUIT) quit = true;
             
             if (state == State::PLAYING)
+            {
                 buttonManager.handleEvent(&e);
+            }
         }
         
         if (state == State::PLAYING)

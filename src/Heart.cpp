@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "Window.hpp"
 #include "GameObject.hpp"
 #include "Sprite.hpp"
@@ -6,7 +5,10 @@
 class Heart : public GameObject
 {
 private:
+    /// Image of red heart.
     Sprite imageRedHeart;
+    
+    /// Image of black heart.
     Sprite imageBlackHeart;
     
 public:
@@ -14,8 +16,8 @@ public:
     
     Heart(int x, int y) :
         GameObject(x,y),
-        imageRedHeart("Tab.png", 1),
-        imageBlackHeart("Tab.png", 2)
+        imageRedHeart("../assets/Tab.png", 1),
+        imageBlackHeart("../assets/Tab.png", 2)
     {
         
     }

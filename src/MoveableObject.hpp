@@ -17,25 +17,37 @@ public:
         LEFT = 3,
     };
     
-    MoveableObject(float initialVelocity);
-
-    void slow(float v);
-
-    void accelerate(float v);
-
-    bool isIdle();
-
-    float getCurrentVelocity();
-    
-    float getInitialVelocity();
-    
-    void setInitialVelocity();
-
 protected:
     bool isMoving;
+    
     float  velocity;
+    
     float  initialVelocity;
+    
     Direction direction;
+    
+public:
+    /// Init the movealbe object.
+    MoveableObject(float initialVelocity);
+
+    /// Slow down the object (Decrease the velocity).
+    void slow(float v);
+
+    /// Accelerate the object (Increase the velocity).
+    void accelerate(float v);
+
+    /// Tells if the object is idle.
+    bool isIdle();
+
+    /// Returns current velocity of the object.
+    float getCurrentVelocity();
+    
+    /// Returns initial velocity of the object (Velocity, which the object had after initialization).
+    float getInitialVelocity();
+    
+    /// Sets initial velocity (Velocity, which the object had after initialization).
+    void setInitialVelocity();
+
 };
 
 #endif /* MoveableObject_hpp */

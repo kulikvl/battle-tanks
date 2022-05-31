@@ -8,6 +8,10 @@
 ///
 class DamageableObject
 {
+protected:
+    bool isAlive; ///< Is it alive?
+    int  hp;      ///< Hitpoints.
+
 public:
     /// Creates damageable object with initial ammount of hitpoints.
     DamageableObject(int initialHp);
@@ -25,11 +29,9 @@ public:
     /// Return ammount of hitpoints left.
     int getHitpoints();
     
+    /// Method called on destruction of the object
     virtual void destroy() = 0;
     
-protected:
-    bool isAlive; ///< Is it alive?
-    int  hp;      ///< Hitpoints.
 };
 
 #endif /* DamageableObject_hpp */

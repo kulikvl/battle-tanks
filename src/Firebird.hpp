@@ -9,13 +9,15 @@
 class Firebird : public Turret
 {
 private:
+    /// Special particle effect for this turret.
     ParticleFire part;
+    
+    /// Tells how red the attacked tank will be.
     uint8_t redFactor;
     
     virtual void removeEffectsFromTargetTank() override;
     
 public:
-
     Firebird(int x, int y);
 
     virtual void update() override;

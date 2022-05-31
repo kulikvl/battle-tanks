@@ -1,6 +1,5 @@
 #include "ParticleEffect.hpp"
 
-
 class ParticleFire : public ParticleEffect
 {
 public:
@@ -11,7 +10,7 @@ public:
 
     virtual void initEffect() override
     {
-        setPosition(100, 384); //
+        setPosition(100, 384);
         
         setStartSpin(0);
         setStartSpinVar(90);

@@ -1,10 +1,5 @@
 #include "TabManager.hpp"
 
-#include <vector>
-#include <functional>
-#include <array>
-using namespace std;
-
 TabManager::TabManager()
 {
     for (size_t i = 0; i < coins.size(); ++i)
@@ -16,7 +11,7 @@ TabManager::TabManager()
     
     for (size_t i = 0; i < hearts.size(); ++i)
     {
-        hearts[i] = std::make_unique<Heart>(offsetHeartTab + i*80, 0);
+        hearts[i] = std::make_unique<Heart>(offsetHeartTab + i * Tile::WIDTH, 0);
     }
 }
 

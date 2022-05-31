@@ -7,7 +7,7 @@ int main(int argc, char* args[])
 {
     try
     {
-        Config::load("config.ini");
+        Config::load("../examples/config.ini");
         
         Log::debugMode(Config::getBool("debug", true));
         

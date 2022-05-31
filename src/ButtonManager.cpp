@@ -1,12 +1,10 @@
 #include "ButtonManager.hpp"
-#include "TileTurret.hpp"
-#include "Button.hpp"
-#include <vector>
+
 #include <algorithm>
 
-using namespace std;
-
-ButtonManager::ButtonManager(const vector<shared_ptr<Tile>>& turretTiles, TurretManager* turretManager) : currentSelectedButton(nullptr), turretManager(turretManager)
+ButtonManager::ButtonManager(const vector<shared_ptr<Tile>>& turretTiles, TurretManager* turretManager) :
+    currentSelectedButton(nullptr),
+    turretManager(turretManager)
 {
     for (size_t i = 0; i < turretTiles.size(); ++i)
     {
@@ -55,7 +53,4 @@ void ButtonManager::handleEvent(SDL_Event* e)
             turretManager->installTurret(TurretManager::TurretType::SMOKY, (TileTurret*)currentSelectedButton );
         }
     }
-    
-    
-    
 }

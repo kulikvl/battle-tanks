@@ -1,12 +1,4 @@
 #include "TurretManager.hpp"
-#include "TileTurret.hpp"
-#include "Log.hpp"
-#include "Config.hpp"
-
-#include <functional>
-#include <string>
-
-using namespace std;
 
 TurretManager::TurretManager(vector<shared_ptr<Tank> >& tanks) : tanks(tanks)
 {

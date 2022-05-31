@@ -2,11 +2,10 @@
 #define Utils_hpp
 
 #include <string>
-#include <vector>
 
-#define PI 3.14159265
+using namespace std;
 
-/// \brief Class for useful functions used in the project
+/// \brief Class for useful functions used in the project.
 namespace Utils
 {
     /// Better random number generator.
@@ -25,8 +24,25 @@ namespace Utils
         bool boolean();
     };
 
-    std::string getMatrixCoords(int x, int y, int blockWidth);
-    void        getGameCoords(const std::string& strCoords, int blockWidth, int offsetFromTop, float& outX, float& outY);
+    // These 2 functions below are general-purpose but only for the local use in this game
+
+    /// Get matrix coordinates.
+    /// @param[in] x In-game (real pixel) coordinate of X
+    /// @param[in] y In-game (real pixel) coordinate of Y
+    /// @param[in] blockWidth Tile width in the game
+    /// @return String formatted as "x,y"
+    string      getMatrixCoords(int x, int y, int blockWidth);
+
+    /// Get In-game (real pixel) coordinates.
+    /// @param[in] strCoords Matrix coordinates formatted as "x,y"
+    /// @param[in] blockWidth Tile width in the game
+    /// @param[in] offsetFromTop Amount of steps to move down from top
+    /// @param[out] outX In-game (real pixel) coordinate X
+    /// @param[out] outY In-game (real pixel) coordinate Y
+    void        getGameCoords(string strCoords, int blockWidth, int offsetFromTop, float& outX, float& outY);
+
+    /// Function for comparing floats on equality.
+    /// @note Using epsilon constant
     bool        areEqual(float a, float b);
 };
 

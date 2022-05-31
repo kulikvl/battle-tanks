@@ -3,9 +3,7 @@
 
 #include "Tank.hpp"
 
-/// \brief Another kind of tank
-///
-/// Standart middle tank, can move in any way
+/// \brief Another kind of tank.
 class MediumTank : public Tank
 {
 private:

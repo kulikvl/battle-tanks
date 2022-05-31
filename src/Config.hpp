@@ -39,15 +39,11 @@ public:
     static bool getBool(std::string key, bool defaultVal);
 
     /// Returns the int value associated with `key`.
-    ///
     static int getInt(std::string key, int defaultVal);
-
     
     /// Returns the float value associated with `key`.
-    ///
     static int getFloat(std::string key, float defaultVal);
     
-
 private:
     /// Actual internal map of std::string keys to values.
     static std::map<std::string, std::string> config;

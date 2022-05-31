@@ -1,8 +1,8 @@
 #include <fstream>
 #include <vector>
-#include <string>
 #include <algorithm>
 #include <exception>
+#include <iostream>
 #include "Config.hpp"
 #include "Utils.hpp"
 #include "Log.hpp"
@@ -19,8 +19,8 @@ void Config::load(string filename)
 
     if (!file.is_open())
     {
-        Log::error("Config::load: Couldn't open '" + filename + "'");
-        throw runtime_error("Failed to open a config file");
+        Log::error("Config::load() -> Couldn't open '" + filename + "'");
+        throw "Config::load() exception";
     }
 
     while (!file.eof())
@@ -31,7 +31,12 @@ void Config::load(string filename)
         if (line.empty() || line[0] == COMMENT_CHAR) continue;
             
         size_t pos = line.find("=");
-        if (pos == string::npos) throw runtime_error("Wrong format config file");
+        if (pos == string::npos)
+        {
+            Log::error("Config::load() -> Wrong format config file!");
+            throw "Config::load() exception";
+        }
+        
         string key = line.substr(0, pos);
         string value = line.substr(pos + 1);
         key.erase(remove_if(key.begin(), key.end(), [](unsigned char x) { return std::isspace(x); }), key.end());

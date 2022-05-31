@@ -2,7 +2,8 @@
 
 TileTurret::TileTurret(int x, int y, Tile::Type type) :
     Tile(x, y, type),
-    Button({x,y})
+    Button(),
+    hasTurret(false)
 {
 }
 
@@ -11,17 +12,17 @@ void TileTurret::update()
     if (hasTurret)
     {
         type = Tile::Type::TURRET;
-        sprite = Sprite("Tiles.png", (int)Tile::Type::ROAD);
+        sprite = Sprite("../assets/Tiles.png", (int)Tile::Type::ROAD);
     }
     else if (isSelected && type == Tile::Type::TURRET)
     {
         type = Tile::Type::TURRET_SELECT;
-        sprite = Sprite("Tiles.png", (int)type);
+        sprite = Sprite("../assets/Tiles.png", (int)type);
     }
     else if (!isSelected && type == Tile::Type::TURRET_SELECT)
     {
         type = Tile::Type::TURRET;
-        sprite = Sprite("Tiles.png", (int)type);
+        sprite = Sprite("../assets/Tiles.png", (int)type);
     }
 }
 
@@ -36,13 +37,13 @@ void TileTurret::handleEvent( SDL_Event* e)
         
         bool inside = true;
         
-        if (x < pos.x) inside = false;
-        else if (x > (pos.x + 80)) inside = false;
-        else if (y < pos.y) inside = false;
-        else if (y > (pos.y + 80)) inside = false;
+        if (x < getX()) inside = false;
+        else if (x > (getX() + Tile::WIDTH)) inside = false;
+        else if (y < getY()) inside = false;
+        else if (y > (getY() + Tile::WIDTH)) inside = false;
         
-        if (inside) {
-            
+        if (inside)
+        {
             isSelected = true;
         }
     }

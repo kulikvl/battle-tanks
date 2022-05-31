@@ -36,7 +36,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/vladimirkulikov/Documents/Cpp/SDL2-TowerDefense/SDL2-TowerDefense"
+      customWorkingDirectory = "/Users/vladimirkulikov/Documents/Cpp/SemestralWork/kulikvl1/src"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"

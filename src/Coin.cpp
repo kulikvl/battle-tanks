@@ -5,6 +5,7 @@
 class Coin : public GameObject
 {
 private:
+    /// Image of the coin.
     Sprite image;
     
 public:
@@ -12,7 +13,7 @@ public:
     
     Coin( int x, int y) :
         GameObject(x,y),
-        image("Tab.png", 0)
+        image("../assets/Tab.png", 0)
     {
     
     }

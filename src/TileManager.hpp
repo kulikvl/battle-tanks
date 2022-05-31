@@ -5,12 +5,13 @@
 #include "Log.hpp"
 #include <functional>
 #include <vector>
-#include <exception>
 
 using namespace std;
 
-/// \brief Class for managing and filling in tiles in the game.
+/// @brief Class for managing and filling in tiles in the game.
+///
 /// Can read map from the file and then generate and draw tiles to the game screen.
+///
 class TileManager
 {
 public:
@@ -31,6 +32,7 @@ private:
     vector<int> readMap(string inFileName);
     
 public:
+    /// Init tiles.
     TileManager();
     
     /// Updates all tiles.

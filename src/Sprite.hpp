@@ -23,10 +23,20 @@ private:
     /// Order in the atlas image.
     int atlasIndex;
     
+    /// Width of the texture.
     int width;
+    
+    /// Height of the texture.
     int height;
     
+    /// Color of the texture.
     Color color;
+    
+    /// @note It's appropriate to allow ParticleEffect class access internal things of the sprite.
+    friend class ParticleEffect;
+    
+    /// Return a pointer to the texture, which this current sprite is using.
+    SDL_Texture* getTexture();
     
 public:
     /// Creates and loads a new sprite from `filename` on main window.
@@ -44,13 +54,13 @@ public:
     /// Returns the height of the sprite image on pixels.
     int getHeight();
     
-    SDL_Texture* getTexture();
-    
+    /// Color will be applied on the texture.
+    /// @note If the texture for this sprite was NOT created as a copy, and there are sprites, that are also using this texture, then color keying will be applied on all the sprites using this texture.
     void setColor( Color color );
     
+    /// Get current color of the texture.
     Color getColor();
 
 };
-
 
 #endif /* Sprite_hpp */

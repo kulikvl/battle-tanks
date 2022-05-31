@@ -30,7 +30,6 @@
 		BEA629EF2828050C00DC2E97 /* MediumTank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEA629ED2828050C00DC2E97 /* MediumTank.cpp */; };
 		BEA629F22828051500DC2E97 /* HeavyTank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEA629F02828051500DC2E97 /* HeavyTank.cpp */; };
 		BEA629F528280EA400DC2E97 /* TankManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEA629F328280EA400DC2E97 /* TankManager.cpp */; };
-		BEA629F828281B4900DC2E97 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEA629F628281B4900DC2E97 /* Button.cpp */; };
 		BEA629FB28281E5800DC2E97 /* TileTurret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEA629F928281E5800DC2E97 /* TileTurret.cpp */; };
 		BEA629FE2828230500DC2E97 /* ButtonManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEA629FC2828230500DC2E97 /* ButtonManager.cpp */; };
 		BEA62A01282831E100DC2E97 /* Turret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEA629FF282831E100DC2E97 /* Turret.cpp */; };
@@ -110,7 +109,6 @@
 		BEA629F12828051500DC2E97 /* HeavyTank.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HeavyTank.hpp; sourceTree = "<group>"; };
 		BEA629F328280EA400DC2E97 /* TankManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TankManager.cpp; sourceTree = "<group>"; };
 		BEA629F428280EA400DC2E97 /* TankManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TankManager.hpp; sourceTree = "<group>"; };
-		BEA629F628281B4900DC2E97 /* Button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 		BEA629F728281B4900DC2E97 /* Button.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Button.hpp; sourceTree = "<group>"; };
 		BEA629F928281E5800DC2E97 /* TileTurret.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TileTurret.cpp; sourceTree = "<group>"; };
 		BEA629FA28281E5800DC2E97 /* TileTurret.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TileTurret.hpp; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 				BEA629F12828051500DC2E97 /* HeavyTank.hpp */,
 				BEA629F328280EA400DC2E97 /* TankManager.cpp */,
 				BEA629F428280EA400DC2E97 /* TankManager.hpp */,
-				BEA629F628281B4900DC2E97 /* Button.cpp */,
 				BEA629F728281B4900DC2E97 /* Button.hpp */,
 				BEA629F928281E5800DC2E97 /* TileTurret.cpp */,
 				BEA629FA28281E5800DC2E97 /* TileTurret.hpp */,
@@ -341,7 +338,6 @@
 				BE7FCECE2827F66C003F1D60 /* MazeSolver.cpp in Sources */,
 				BEA629F528280EA400DC2E97 /* TankManager.cpp in Sources */,
 				BEA629FE2828230500DC2E97 /* ButtonManager.cpp in Sources */,
-				BEA629F828281B4900DC2E97 /* Button.cpp in Sources */,
 				BE7FCEC82827E23A003F1D60 /* GameObject.cpp in Sources */,
 				BEDEEC31282E989A00D2D00E /* ParticleTankExplosion.cpp in Sources */,
 				BE7FCEC52827DE4B003F1D60 /* DamageableObject.cpp in Sources */,

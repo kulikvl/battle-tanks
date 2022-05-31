@@ -37,14 +37,14 @@ bool Utils::Random::boolean()
     return ((distance(engine) % 2) == 0);
 }
 
-std::string Utils::getMatrixCoords(int x, int y, int blockWidth)
+string Utils::getMatrixCoords(int x, int y, int blockWidth)
 {
-    return std::to_string( (y - blockWidth) / blockWidth) + "," + std::to_string(x / blockWidth);
+    return to_string( (y - blockWidth) / blockWidth) + "," + to_string(x / blockWidth);
 }
 
-void Utils::getGameCoords(const std::string& strCoords, int blockWidth, int offsetFromTop, float& outX, float& outY)
+void Utils::getGameCoords(string strCoords, int blockWidth, int offsetFromTop, float& outX, float& outY)
 {
-    std::stringstream s;
+    stringstream s;
     s << strCoords;
     s >> outY;
     outY += offsetFromTop;
@@ -57,7 +57,7 @@ void Utils::getGameCoords(const std::string& strCoords, int blockWidth, int offs
 
 bool Utils::areEqual(float a, float b)
 {
-    return std::fabs(a - b) <= std::numeric_limits<float>::epsilon();
+    return fabs(a - b) <= numeric_limits<float>::epsilon();
 }
 
 

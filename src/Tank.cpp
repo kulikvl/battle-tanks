@@ -1,6 +1,4 @@
 #include "Tank.hpp"
-#include "Utils.hpp"
-#include "TileManager.hpp"
 
 Tank::Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp) :
     mazeSolver(mazeSolver),
@@ -39,6 +37,7 @@ void Tank::move()
         if (currentPathTile == path.size() - 2) {
             slow(100);
             Player::hp--;
+            isAlive = false;
             isActive = false;
             return;
         }
@@ -69,7 +68,9 @@ void Tank::move()
 void Tank::update()
 {
     if (!isDead())
+    {
         move();
+    }
     else
     {
         if (timerAfterDeath.isDone())
@@ -82,7 +83,9 @@ void Tank::update()
 void Tank::render()
 {
     if (!isDead())
+    {
         sprite.render(getX(), getY(), direction * 90);
+    }
     else
     {
         float x(0.0f), y(0.0f), d(0.0f);
@@ -100,5 +103,6 @@ void Tank::destroy()
 
 Sprite* Tank::getSprite()
 {
+    if (isActive == false) return nullptr;
     return &sprite;
 }

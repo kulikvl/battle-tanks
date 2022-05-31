@@ -5,7 +5,10 @@ using namespace std;
 
 Color::Color()
     : red(0), green(0), blue(0), alpha(255)
-{ }
+{
+    
+}
+
 Color::Color(int color_mask)
 {
     this->red   = (color_mask >> 16) & 0xFF;
@@ -13,9 +16,13 @@ Color::Color(int color_mask)
     this->blue  =  color_mask        & 0xFF;
     this->alpha = 255;
 }
+
 Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
     : red(r), green(g), blue(b), alpha(a)
-{ }
+{
+    
+}
+
 Color::Color(const string& colorName)
 {
     uint8_t r(0), g(0), b(0);
@@ -34,6 +41,7 @@ Color::Color(const string& colorName)
     this->green = g;
     this->alpha = 255;
 }
+
 Color Color::operator+(const Color& color) const
 {
     int tmp  = 0;
@@ -66,6 +74,7 @@ Color Color::operator+(const Color& color) const
     
     return result;
 }
+
 Color Color::operator-(const Color& color) const
 {
     int tmp  = 0;
@@ -98,6 +107,7 @@ Color Color::operator-(const Color& color) const
 
     return result;
 }
+
 bool Color::operator==(const Color& color) const
 {
     return ((this->red   == color.red)   &&
@@ -105,6 +115,7 @@ bool Color::operator==(const Color& color) const
             (this->blue  == color.blue)  &&
             (this->alpha == color.alpha));
 }
+
 bool Color::operator!=(const Color& color) const
 {
     return ((this->red   != color.red)   &&
@@ -112,32 +123,39 @@ bool Color::operator!=(const Color& color) const
             (this->blue  != color.blue)  &&
             (this->alpha != color.alpha));
 }
+
 uint8_t Color::r() const
 {
     return (this->red);
 }
+
 uint8_t Color::g() const
 {
     return (this->green);
 }
+
 uint8_t Color::b() const
 {
     return (this->blue);
 }
+
 uint8_t Color::a() const
 {
     return (this->alpha);
 }
+
 void Color::randomize()
 {
     this->red   = Utils::Random::between(0, 255);
     this->green = Utils::Random::between(0, 255);
     this->blue  = Utils::Random::between(0, 255);
 }
+
 void Color::randomizeAlpha()
 {
     this->alpha = Utils::Random::between(0, 255);
 }
+
 void Color::invert(bool R, bool G, bool B)
 {
     if (R) this->red   = (255 - this->red);

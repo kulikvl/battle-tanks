@@ -1,9 +1,6 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#include <vector>
-#include <functional>
-
 #include "TileManager.hpp"
 #include "TankManager.hpp"
 #include "TurretManager.hpp"
@@ -18,8 +15,10 @@
 using namespace std;
 
 /// \brief Class for managing general game logic a main game loop.
+///
 /// Class, in which the main game loop is running.
 /// It checks for input, updates, clears and renders the screen every frame.
+///
 class Game
 {
 public:
@@ -52,6 +51,7 @@ private:
     /// Current game state.
     State state;
     
+    /// Image of the end screen with the resolution of the game-window
     Sprite endScreenImage;
     
 public:
@@ -63,8 +63,7 @@ public:
     /// This is where it all happens. The game never leaves this
     /// method.
     ///
-    /// If we leave this method, the game quits, as seen on
-    /// *main.cpp*.
+    /// @note If we leave this method, the game quits, as seen on *main.cpp*.
     void run();
 
 };

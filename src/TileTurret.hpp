@@ -5,14 +5,22 @@
 #include "Button.hpp"
 
 /// \brief Special kind of tile class (inherits from Tile class and Button class), where we can put the turret.
+///
 /// Class that is tile and button at the same time.
+/// 
 class TileTurret : public Button, public Tile
 {
+private:
+    bool hasTurret;
+    
+    friend class TurretManager;
+    
 public:
     TileTurret(int x, int y, Tile::Type type);
+    
     virtual void update() override;
+    
     virtual void handleEvent( SDL_Event* e) override;
-    bool hasTurret = false;
 };
 
 #endif /* TileTurret_hpp */

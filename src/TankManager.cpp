@@ -3,23 +3,24 @@
 #include "Log.hpp"
 #include "Config.hpp"
 
-TankManager::TankManager(const MazeSolver& mazeSolver) : mazeSolver(mazeSolver), timer(3000)
+TankManager::TankManager(const MazeSolver& mazeSolver) :
+    mazeSolver(mazeSolver),
+    timer(3000),
+    tanksGenerated(0)
 {
     timer.startCounting();
 }
 
 void TankManager::generate()
 {
-    TankType type = (TankType) Utils::Random::between((int)TankType::LIGHT, (int)TankType::HEAVY);
-    
-    switch (type) {
-        case TankType::LIGHT:
+    switch ( Utils::Random::between(0, 2) ) {
+        case 0:
             tanks.push_back(make_shared<LightTank>(mazeSolver));
             break;
-        case TankType::MEDIUM:
+        case 1:
             tanks.push_back(make_shared<MediumTank>(mazeSolver));
             break;
-        case TankType::HEAVY:
+        case 2:
             tanks.push_back(make_shared<HeavyTank>(mazeSolver));
             break;
     }
@@ -31,11 +32,16 @@ void TankManager::update()
     {
         generate();
         
-        int difficulty = Config::getInt("difficulty", 1);
-        float delay = Utils::Random::fbetween(4000.0f, 5000.0f) / sqrt( (float)difficulty) ;
-        timer.setDelay( delay );
-        cout << "delay: " << delay << endl;
+        tanksGenerated++;
         
+        int difficulty = Config::getInt("difficulty", 1);
+        
+        float delay = Utils::Random::fbetween(4000.0f, 5500.0f) / sqrt( (float)difficulty);
+        
+        delay -= tanksGenerated * 5.0f;
+        
+        timer.setDelay( delay );
+
         timer.startCounting();
     }
     

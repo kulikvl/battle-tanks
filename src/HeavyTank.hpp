@@ -3,9 +3,7 @@
 
 #include "Tank.hpp"
 
-/// \brief Another kind of tank
-///
-/// Has low speed, high HP, and moves always the shortest path
+/// \brief Another kind of tank.
 class HeavyTank : public Tank
 {
 private:

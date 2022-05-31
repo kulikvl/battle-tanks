@@ -9,20 +9,30 @@
 ///
 class GameObject
 {
-public:
+protected:
+    /// Position of the game object.
     SDL_FPoint position;
     
-    bool isActive;
-    
+public:
+    /// Init gameObject.
     GameObject(float x = 0, float y = 0);
     
+    /// Update inner things.
+    /// @note Should be called every frame.
     virtual void update() = 0;
     
+    /// Update inner things.
+    /// @note Should be called every frame.
     virtual void render() = 0;
     
+    /// Get X coordinate.
     float getX();
     
+    /// Get Y coordinate.
     float getY();
+    
+    /// Tells if the game object is active
+    bool isActive;
 };
 
 #endif /* GameObject_hpp */

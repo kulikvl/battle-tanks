@@ -1,5 +1,8 @@
 #include "TileManager.hpp"
 #include "TileTurret.hpp"
+#include "Config.hpp"
+#include <fstream>
+#include <exception>
 
 TileManager::TileManager() 
 {
@@ -12,10 +15,12 @@ vector<int> TileManager::readMap(string inFileName)
     
     if ( inputFile.fail() )
     {
-        throw runtime_error("Failed to open the map!");
+        Log::error("TileManager::readMap() -> Failed to open the map!");
+        throw runtime_error("TileManager::readMap() exception");
     }
     
     vector<int> mapData;
+    
     mapData.resize(GAME_TILES);
     
     for ( int i = 0; i < GAME_TILES; ++i )
@@ -26,12 +31,15 @@ vector<int> TileManager::readMap(string inFileName)
         
         if ( inputFile.fail() )
         {
-            throw runtime_error("Failed while reading the map!");
+            Log::error("TileManager::readMap() -> Failed while reading the map!");
+            throw runtime_error("TileManager::readMap() exception");
         }
         
         if (tileType < 0 || tileType >= TILE_SPRITES )
         {
-            throw runtime_error("Wrong data faced while reading the map! Number should be [0," + to_string(TILE_SPRITES) + "]");
+            string errorMessage("TileManager::readMap() -> " + string("Wrong data faced while reading the map! Number should be [0,") + to_string(TILE_SPRITES) + "]");
+            Log::error(errorMessage);
+            throw runtime_error("TileManager::readMap() exception");
         }
 
         mapData[i] = tileType;
@@ -43,7 +51,7 @@ vector<int> TileManager::readMap(string inFileName)
 void TileManager::fill()
 {
     /* Download the map */
-    vector<int> mapData = readMap("Default.map");
+    vector<int> mapData = readMap("../examples/Map/Default.map"); //+ Config::get("map"));
     
     /* The tile offsets */
     int x(0), y(0);

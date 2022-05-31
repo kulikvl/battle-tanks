@@ -18,10 +18,10 @@ void TimerCounter::startCounting()
 
 bool TimerCounter::isDone()
 {
-    if (this->done)             // Previously finished
+    if (this->done)
         return true;
 
-    if (!(this->running))       // Never started
+    if (!(this->running))
         return false;
 
     this->pause();

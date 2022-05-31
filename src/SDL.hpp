@@ -10,7 +10,7 @@
 /// \brief Wrapper class on basic SDL2 calls.
 ///
 /// This simply initializes and finishes SDL2.
-/// Also it contains the main window, on which the whole game is displayed
+/// @note Also it contains the 'main window', on which the whole game is displayed
 ///
 struct SDL
 {

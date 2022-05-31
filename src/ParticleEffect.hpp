@@ -8,11 +8,16 @@
 class ParticleEffect : public ParticleSystem
 {
 private:
+    /// Particle image.
     Sprite sprite;
     
 public:
+    /// Init.
     ParticleEffect();
+    
+    /// Draw particle.
     void draw(float x, float y, float angle);
+    
     virtual void initEffect() = 0;
 };
 

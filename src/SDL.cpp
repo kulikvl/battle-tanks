@@ -1,5 +1,6 @@
 #include "SDL.hpp"
 
+/// The whole game is designed for this resolution, that's why it can not be changed nor custumized.
 Window SDL::window = Window(640, 720, "Tower defense");
 
 bool SDL::init()

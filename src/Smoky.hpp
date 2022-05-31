@@ -10,10 +10,14 @@
 class Smoky : public Turret
 {
 private:
+    /// Special particle effect for this turret.
     ParticleShotExplosion partExplosion;
+    
+    /// Special particle effect for this turret.
     ParticleShotSmoke partSmoke;
     
-    TimerCounter timerReload;
+    /// Particle timer (frequency of effects applied on tank and turret).
+    TimerCounter timerParticle;
     
 public:
     

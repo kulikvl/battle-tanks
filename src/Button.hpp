@@ -2,20 +2,14 @@
 #define Button_hpp
 
 #include "SDL.hpp"
-#include "Window.hpp"
 
 /// \brief Class for representing basic button functionality
 class Button
 {
-protected:
-    SDL_Point pos;
-
 public:
-    Button(SDL_Point pos);
+    virtual void handleEvent( SDL_Event* e ) = 0;
     
-    virtual void handleEvent( SDL_Event* e);
-    
-    bool isSelected;
+    bool isSelected = false;
 };
 
 #endif /* Button_hpp */

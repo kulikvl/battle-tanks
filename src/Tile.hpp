@@ -16,6 +16,7 @@ public:
     /// @note *Every tile
     static const int WIDTH = 80;
     
+    /// Types of the tile.
     enum Type
     {
         WALL = 0,
@@ -45,7 +46,6 @@ public:
     virtual void render() override;
     
     Tile::Type getType();
-    
 };
 
 #endif /* Tile_hpp */

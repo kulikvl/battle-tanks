@@ -20,24 +20,26 @@
 using namespace std;
 
 /// \brief Class for creating tanks and controlling them.
-/// e.x. if tank is already at the end of the road, destroy it.
+///
+/// @note if tank is already at the end of the road, destroy it.
+///
 class TankManager
 {
-public:
-    enum TankType
-    {
-        LIGHT = 0,
-        MEDIUM = 1,
-        HEAVY = 2,
-    };
-    
 private:
+    /// Object for path selection.
     const MazeSolver& mazeSolver;
+    
+    /// Vector of current tanks in the scene.
     vector<shared_ptr<Tank> > tanks;
+    
+    /// Timer for tank spawner.
     TimerCounter timer;
     
-
+    /// Count of generated tanks.
+    size_t tanksGenerated;
+    
 public:
+    /// Init everything.
     TankManager(const MazeSolver& mazeSolver);
     
     void generate();
@@ -46,6 +48,7 @@ public:
     
     void render();
     
+    /// Get vector of current tanks in the scene.
     vector<shared_ptr<Tank> >& getTanks();
 };
 
