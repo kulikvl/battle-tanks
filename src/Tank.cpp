@@ -1,6 +1,7 @@
 #include "Tank.hpp"
 
 Tank::Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp) :
+    GameObject(),
     mazeSolver(mazeSolver),
     sprite(sprite),
     MoveableObject(velocity),
@@ -103,6 +104,5 @@ void Tank::destroy()
 
 Sprite* Tank::getSprite()
 {
-    if (isActive == false) return nullptr;
     return &sprite;
 }

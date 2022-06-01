@@ -40,6 +40,8 @@ void TankManager::update()
         
         delay -= tanksGenerated * 5.0f;
         
+        if (delay < 250.0f) delay = 250.0f;
+        
         timer.setDelay( delay );
 
         timer.startCounting();

@@ -1,4 +1,5 @@
 #include "Turret.hpp"
+#include <iostream>
 
 Turret::Turret(int x, int y, const Sprite& sprite, int damage, float reload, float radius) :
     GameObject(x,y),
@@ -87,7 +88,7 @@ void Turret::findTargetTank(vector<shared_ptr<Tank> >& tanks)
 
     for (size_t i = 0; i < tanks.size(); ++i)
     {
-        if (tanks[i]->isDead()) continue;
+        if (tanks[i]->isDead() || !tanks[i]->isActive) continue;
         
         currentDistance = sqrt( (tanks[i]->getX() - getX()) * (tanks[i]->getX() - getX()) + (tanks[i]->getY() - getY()) * (tanks[i]->getY() - getY()) );
         if (currentDistance < radius && currentDistance < distanceToTargetTank)
@@ -136,6 +137,7 @@ void Turret::getCoordsOfGunpoint(float& x, float& y, float& d)
             xReal = 80.0f;
         else
             xReal = 40.0f;
+        
     }
     else
     {
@@ -166,6 +168,8 @@ void Turret::getCoordsOfGunpoint(float& x, float& y, float& d)
                 yReal = 40.0f - yNormal;
         }
     }
+    
+    //cout << rotation << " " << xReal << "," << yReal << endl;
     
     float angle = -rotation + 90.0f;
     

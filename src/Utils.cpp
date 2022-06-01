@@ -57,7 +57,7 @@ void Utils::getGameCoords(string strCoords, int blockWidth, int offsetFromTop, f
 
 bool Utils::areEqual(float a, float b)
 {
-    return fabs(a - b) <= numeric_limits<float>::epsilon();
+    return fabs(a - b) <= 0.0001f; //numeric_limits<float>::epsilon();
 }
 
 

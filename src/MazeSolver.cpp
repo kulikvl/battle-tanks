@@ -31,6 +31,12 @@ MazeSolver::MazeSolver(const vector<shared_ptr<Tile>>& roadTiles)
     
     solveGridBFS();
     
+    if (shortestPath.empty() || longestPath.empty())
+    {
+        Log::error("MazeSolver::MazeSolver() -> Failed to find a path!");
+        throw runtime_error("MazeSolver::MazeSolver() exception");
+    }
+    
     stringstream s;
     printGrid(s);
     Log::debug(s.str());

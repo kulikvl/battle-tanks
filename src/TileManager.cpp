@@ -3,6 +3,7 @@
 #include "Config.hpp"
 #include <fstream>
 #include <exception>
+#include <cstdlib>
 
 TileManager::TileManager() 
 {
@@ -44,6 +45,39 @@ vector<int> TileManager::readMap(string inFileName)
 
         mapData[i] = tileType;
     }
+    
+    if (count(mapData.begin(), mapData.end(), 2) != 1 || count(mapData.begin(), mapData.end(), 3) != 1)
+    {
+        Log::error("TileManager::readMap() -> Wrong map format! Double in Exit or Enter!");
+        throw runtime_error("TileManager::readMap() exception");
+    }
+    
+    const vector<int> cornerIndexes = {0,1,2,3,4,5,6,7,8,15,16,23,24,31,32,39,40,47,48,55,56,57,58,59,60,61,62,63};
+    
+    vector<int>::iterator iterEnter = find(mapData.begin(), mapData.end(), 2);
+    size_t indexEnter = std::distance(mapData.begin(), iterEnter);
+    if (find(cornerIndexes.begin(), cornerIndexes.end(), indexEnter) == cornerIndexes.end())
+    {
+        Log::error("TileManager::readMap() -> Wrong map format! Wrong Enter place! "+ to_string(indexEnter));
+        throw runtime_error("TileManager::readMap() exception");
+    }
+    
+    vector<int>::iterator iterExit = find(mapData.begin(), mapData.end(), 3);
+    size_t indexExit = std::distance(mapData.begin(), iterExit);
+    if (find(cornerIndexes.begin(), cornerIndexes.end(), indexExit) == cornerIndexes.end())
+    {
+        Log::error("TileManager::readMap() -> Wrong map format! Wrong Exit place! " + to_string(indexExit));
+        throw runtime_error("TileManager::readMap() exception");
+    }
+    
+//    Log::debug(to_string(indexEnter) );
+//    Log::debug(to_string(indexExit) );
+    
+    if (std::abs((int)indexEnter - (int)indexExit) <= 1)
+    {
+        Log::error("TileManager::readMap() -> Wrong map format! Distance between Enter and Exit should be > 1!");
+        throw runtime_error("TileManager::readMap() exception");
+    }
 
     return mapData;
 }
@@ -51,7 +85,7 @@ vector<int> TileManager::readMap(string inFileName)
 void TileManager::fill()
 {
     /* Download the map */
-    vector<int> mapData = readMap("../examples/Map/Default.map"); //+ Config::get("map"));
+    vector<int> mapData = readMap("../examples/Map/" + Config::get("map"));
     
     /* The tile offsets */
     int x(0), y(0);
