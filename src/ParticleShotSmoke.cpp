@@ -1,5 +1,6 @@
 #include "ParticleEffect.hpp"
 
+/// @brief Implementation of shot of smoke turret effect.
 class ParticleShotSmoke : public ParticleEffect
 {
 public:

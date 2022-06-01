@@ -2,6 +2,7 @@
 #include "GameObject.hpp"
 #include "Sprite.hpp"
 
+/// @brief Class for heart icon in the tab menu.
 class Heart : public GameObject
 {
 private:

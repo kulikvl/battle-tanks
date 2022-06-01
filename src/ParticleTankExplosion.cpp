@@ -1,5 +1,6 @@
 #include "ParticleEffect.hpp"
 
+/// @brief Implementation of tank explosion effect.
 class ParticleTankExplosion : public ParticleEffect
 {
 public:

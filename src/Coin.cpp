@@ -2,6 +2,7 @@
 #include "GameObject.hpp"
 #include "Sprite.hpp"
 
+/// @brief Class for coin icon in the tab menu.
 class Coin : public GameObject
 {
 private:

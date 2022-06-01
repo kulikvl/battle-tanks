@@ -5,6 +5,7 @@
 #include "SDL.hpp"
 #include "Sprite.hpp"
 
+/// @brief Parent class for every specific particle effect.
 class ParticleEffect : public ParticleSystem
 {
 private:

@@ -1,5 +1,6 @@
 #include "ParticleEffect.hpp"
 
+/// @brief Implementation of freeze effect.
 class ParticleFreeze : public ParticleEffect
 {
 public:

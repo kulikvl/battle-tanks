@@ -44,6 +44,7 @@ void Turret::shoot()
 {
     if (targetTank != nullptr && !targetTank->isDead() && reloadTimer.isDone())
     {
+        Log::debug("SHOOT! - " + to_string(effectsAppliedOnTargetTank) );
         targetTank->damage(damage);
         reloadTimer.startCounting();
     }
@@ -55,6 +56,7 @@ void Turret::findTargetTank(vector<shared_ptr<Tank> >& tanks)
     {
         if (targetTank->isActive == false)
         {
+            Turret::removeEffectsFromTargetTank();
             targetTank = nullptr;
         }
         else
@@ -83,6 +85,8 @@ void Turret::findTargetTank(vector<shared_ptr<Tank> >& tanks)
         }
     }
     
+    //if (effectsAppliedOnTargetTank == true) Log::error("should not be applied!");
+
     distanceToTargetTank = MAXFLOAT;
     float currentDistance = MAXFLOAT;
 

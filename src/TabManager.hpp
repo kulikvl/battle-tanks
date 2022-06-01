@@ -14,6 +14,7 @@
 
 using namespace std;
 
+/// @brief Class for managing UI interface that represents statistics while playing.
 class TabManager : public GameObject
 {
 private:

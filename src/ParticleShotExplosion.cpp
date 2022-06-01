@@ -1,5 +1,6 @@
 #include "ParticleEffect.hpp"
 
+/// @brief Implementation of shot explosion effect.
 class ParticleShotExplosion : public ParticleEffect
 {
 public:

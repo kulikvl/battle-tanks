@@ -1,5 +1,6 @@
 #include "ParticleEffect.hpp"
 
+/// @brief Implementation of fire effect.
 class ParticleFire : public ParticleEffect
 {
 public:
