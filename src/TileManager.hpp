@@ -3,6 +3,7 @@
 
 #include "Tile.hpp"
 #include "Log.hpp"
+
 #include <functional>
 #include <vector>
 

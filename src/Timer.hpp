@@ -3,7 +3,7 @@
 
 #include <string>
 #include <sstream>
-#include "stdint.h" // for uint32_t
+#include <cstdint> // for uint32_t
 
 /// \brief General-purpose timer, measured in milisseconds.
 ///

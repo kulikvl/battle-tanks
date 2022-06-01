@@ -1,7 +1,6 @@
 #ifndef Tile_hpp
 #define Tile_hpp
 
-#include "Window.hpp"
 #include "GameObject.hpp"
 #include "Sprite.hpp"
 

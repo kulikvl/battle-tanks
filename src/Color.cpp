@@ -1,6 +1,9 @@
 #include "Color.hpp"
+
 #include "Utils.hpp"
+
 #include <iostream>
+
 using namespace std;
 
 Color::Color()

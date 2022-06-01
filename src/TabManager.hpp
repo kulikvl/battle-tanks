@@ -1,7 +1,6 @@
 #ifndef TabManager_hpp
 #define TabManager_hpp
 
-#include "Window.hpp"
 #include "GameObject.hpp"
 #include "Player.hpp"
 #include "Heart.cpp"

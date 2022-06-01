@@ -13,7 +13,7 @@ TankManager::TankManager(const MazeSolver& mazeSolver) :
 
 void TankManager::generate()
 {
-    switch ( 1 ){//Utils::Random::between(0, 2) ) {
+    switch ( Utils::Random::between(0, 2) ) {
         case 0:
             tanks.push_back(make_shared<LightTank>(mazeSolver));
             break;
@@ -42,7 +42,6 @@ void TankManager::update()
         
         if (delay < 250.0f) delay = 250.0f;
         
-        delay = 1000.0f;
         timer.setDelay( delay );
 
         timer.startCounting();

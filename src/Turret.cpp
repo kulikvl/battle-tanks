@@ -1,5 +1,4 @@
 #include "Turret.hpp"
-#include <iostream>
 
 Turret::Turret(int x, int y, const Sprite& sprite, int damage, float reload, float radius) :
     GameObject(x,y),
@@ -44,7 +43,7 @@ void Turret::shoot()
 {
     if (targetTank != nullptr && !targetTank->isDead() && reloadTimer.isDone())
     {
-        Log::debug("SHOOT! - " + to_string(effectsAppliedOnTargetTank) );
+        //Log::debug("SHOOT! - " + to_string(effectsAppliedOnTargetTank) );
         targetTank->damage(damage);
         reloadTimer.startCounting();
     }

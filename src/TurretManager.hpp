@@ -3,7 +3,6 @@
 
 #include "Turret.hpp"
 #include "Tank.hpp"
-#include "Window.hpp"
 #include "Player.hpp"
 #include "Firebird.hpp"
 #include "Freeze.hpp"

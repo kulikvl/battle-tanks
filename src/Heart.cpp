@@ -1,4 +1,3 @@
-#include "Window.hpp"
 #include "GameObject.hpp"
 #include "Sprite.hpp"
 

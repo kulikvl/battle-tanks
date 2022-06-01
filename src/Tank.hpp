@@ -4,7 +4,6 @@
 #include "GameObject.hpp"
 #include "MoveableObject.hpp"
 #include "DamageableObject.hpp"
-#include "Window.hpp"
 #include "Sprite.hpp"
 #include "MazeSolver.hpp"
 #include "ParticleTankExplosion.cpp"

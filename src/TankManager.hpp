@@ -1,7 +1,6 @@
 #ifndef TankManager_hpp
 #define TankManager_hpp
 
-#include "Window.hpp"
 #include "MazeSolver.hpp"
 
 #include "Tank.hpp"

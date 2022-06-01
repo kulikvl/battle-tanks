@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2_image/SDL_image.h>
 
-#include "Log.hpp"
 #include "Window.hpp"
 
 /// \brief Wrapper class on basic SDL2 calls.

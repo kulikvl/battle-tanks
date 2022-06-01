@@ -1,4 +1,5 @@
 #include "Utils.hpp"
+
 #include <sstream>   // sstream
 #include <algorithm> // find_if
 #include <utility>   // C++11

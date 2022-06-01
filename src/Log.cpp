@@ -1,4 +1,5 @@
 #include "Log.hpp"
+
 #include <sstream>
 #include <iostream>
 #include <fstream>

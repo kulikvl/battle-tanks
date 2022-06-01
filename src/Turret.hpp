@@ -4,7 +4,6 @@
 #include "GameObject.hpp"
 #include "ShootableObject.hpp"
 #include "Tank.hpp"
-#include "Window.hpp"
 #include "Sprite.hpp"
 #include "TimerCounter.hpp"
 #include "Utils.hpp"
