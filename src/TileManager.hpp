@@ -4,7 +4,7 @@
 #include "Tile.hpp"
 #include "Log.hpp"
 
-#include <functional>
+#include <memory>
 #include <vector>
 
 using namespace std;

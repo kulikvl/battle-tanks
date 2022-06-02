@@ -80,7 +80,7 @@ bool ParticleSystem::initWithTotalParticles(int numberOfParticles)
 
 void ParticleSystem::resetTotalParticles(int numberOfParticles)
 {
-    if (particle_data_.size() < numberOfParticles)
+    if (particle_data_.size() < (size_t) numberOfParticles)
     {
         particle_data_.resize(numberOfParticles);
     }

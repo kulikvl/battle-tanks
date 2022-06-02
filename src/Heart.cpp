@@ -16,8 +16,8 @@ public:
     
     Heart(int x, int y) :
         GameObject(x,y),
-        imageRedHeart("../assets/Tab.png", 1),
-        imageBlackHeart("../assets/Tab.png", 2)
+        imageRedHeart("assets/Tab.png", 1),
+        imageBlackHeart("assets/Tab.png", 2)
     {
         
     }

@@ -8,7 +8,7 @@ Game::Game() :
     buttonManager(tileManager.queryTilesOfTypes({Tile::Type::TURRET}), &turretManager),
     tabManager(),
     state(State::PLAYING),
-    endScreenImage("../assets/EndScreen.png")
+    endScreenImage("assets/EndScreen.png")
 {
     Utils::Random::seed();
     Player::coins = Config::getInt("start_coins", 5);

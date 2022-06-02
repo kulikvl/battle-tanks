@@ -2,7 +2,7 @@
 #define ButtonManager_hpp
 
 #include <vector>
-#include <functional>
+#include <memory>
 
 #include "TileTurret.hpp"
 #include "TurretManager.hpp"

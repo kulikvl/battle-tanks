@@ -33,6 +33,9 @@ private:
     /// Organise and create tiles.
     TileManager tileManager;
     
+    /// Find all paths in the maze (BFS).
+    MazeSolver mazeSolver;
+    
     /// Organise and create tanks.
     TankManager tankManager;
     
@@ -41,10 +44,7 @@ private:
     
     /// Control buttons.
     ButtonManager buttonManager;
-    
-    /// Find all paths in the maze (BFS).
-    MazeSolver mazeSolver;
-    
+
     /// Organise tab menu and buttons.
     TabManager tabManager;
     

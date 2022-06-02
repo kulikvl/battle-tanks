@@ -1,15 +1,14 @@
 #include "SDL.hpp"
-
 #include "Log.hpp"
 
-/// The whole game is designed for this resolution, that's why it can not be changed nor custumized.
+/// The whole game is designed for this resolution, that's why it can not be changed.
 Window SDL::window = Window(640, 720, "Tower defense");
 
 bool SDL::init()
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0 )
     {
-        Log::error("SDL_Init: Couldn't start SDL");
+        Log::error("SDL::Init() -> Couldn't start SDL VIDEO");
         Log::error(std::string(SDL_GetError()));
         throw "SDL_Init() exception";
     }
@@ -22,7 +21,7 @@ bool SDL::init()
     int imgFlags = IMG_INIT_PNG;
     if( !( IMG_Init( imgFlags ) & imgFlags ) )
     {
-        Log::error("SDL_Init: Couldn't start SDL");
+        Log::error("SDL::Init() -> Couldn't start SDL IMG");
         Log::error(std::string(SDL_GetError()));
         throw "IMG_Init() exception";
     }
@@ -32,6 +31,8 @@ bool SDL::init()
 
 void SDL::exit()
 {
+    Log::debug("Clear resources before exiting...");
+    //window.destroy();
     IMG_Quit();
     SDL_Quit();
 }

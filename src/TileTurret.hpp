@@ -8,10 +8,10 @@
 ///
 /// Class that is tile and button at the same time.
 /// 
-class TileTurret : public Button, public Tile
+class TileTurret : public Tile, public Button
 {
 private:
-    bool hasTurret;
+    bool hasTurret = false;
     
     friend class TurretManager;
     

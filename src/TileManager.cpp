@@ -5,6 +5,7 @@
 #include <fstream>
 #include <exception>
 #include <cstdlib>
+#include <algorithm>
 
 TileManager::TileManager() 
 {
@@ -71,9 +72,6 @@ vector<int> TileManager::readMap(string inFileName)
         throw runtime_error("TileManager::readMap() exception");
     }
     
-//    Log::debug(to_string(indexEnter) );
-//    Log::debug(to_string(indexExit) );
-    
     if (std::abs((int)indexEnter - (int)indexExit) <= 1)
     {
         Log::error("TileManager::readMap() -> Wrong map format! Distance between Enter and Exit should be > 1!");
@@ -86,9 +84,8 @@ vector<int> TileManager::readMap(string inFileName)
 void TileManager::fill()
 {
     /* Download the map */
-    vector<int> mapData = readMap("../examples/Map/" + Config::get("map"));
+    vector<int> mapData = readMap("examples/Map/" + Config::get("map"));
     
-    /* The tile offsets */
     int x(0), y(0);
     
     /* Create menu tiles */

@@ -2,8 +2,7 @@
 
 TileTurret::TileTurret(int x, int y, Tile::Type type) :
     Tile(x, y, type),
-    Button(),
-    hasTurret(false)
+    Button()
 {
 }
 
@@ -12,17 +11,17 @@ void TileTurret::update()
     if (hasTurret)
     {
         type = Tile::Type::TURRET;
-        sprite = Sprite("../assets/Tiles.png", (int)Tile::Type::ROAD);
+        sprite = Sprite("assets/Tiles.png", (int)Tile::Type::ROAD);
     }
     else if (isSelected && type == Tile::Type::TURRET)
     {
         type = Tile::Type::TURRET_SELECT;
-        sprite = Sprite("../assets/Tiles.png", (int)type);
+        sprite = Sprite("assets/Tiles.png", (int)type);
     }
     else if (!isSelected && type == Tile::Type::TURRET_SELECT)
     {
         type = Tile::Type::TURRET;
-        sprite = Sprite("../assets/Tiles.png", (int)type);
+        sprite = Sprite("assets/Tiles.png", (int)type);
     }
 }
 

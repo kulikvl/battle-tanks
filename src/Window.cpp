@@ -28,6 +28,7 @@ Window::Window(unsigned int width, unsigned int height, string title) :
 
 Window::~Window()
 {
+    Log::debug("Destroy window...");
     destroy();
 }
 

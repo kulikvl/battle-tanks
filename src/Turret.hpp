@@ -32,7 +32,7 @@ protected:
     TimerCounter reloadTimer;
     
     /// If any effects of this turret applied to the attacked tank.
-    bool effectsAppliedOnTargetTank = false;
+    bool effectsAppliedOnTargetTank;
     
     /// Removes all efects of current turret applied to the target tank.
     virtual void removeEffectsFromTargetTank();

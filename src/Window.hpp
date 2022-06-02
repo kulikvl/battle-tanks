@@ -14,7 +14,6 @@
 #endif
 
 #include "Color.hpp"
-#include "Timer.hpp"
 
 using namespace std;
 
@@ -26,6 +25,13 @@ using namespace std;
 /// Here we set things like fullscreen, window position, size, etc.
 class Window
 {
+public:
+    /// SDL's internal data structure that represents the window.
+    SDL_Window* window;
+
+    /// SDL's internal data structure to which we render textures.
+    SDL_Renderer* renderer;
+    
 private:
     /// Background color
     Color bg_color;
@@ -65,12 +71,6 @@ public:
     ///
     /// @note Affects clearScreen().
     void setBackgroundColor(Color color = Color(0, 0, 0));
-
-    /// SDL's internal data structure that represents the window.
-    SDL_Window* window;
-
-    /// SDL's internal data structure to which we render textures.
-    SDL_Renderer* renderer;
 };
 
 

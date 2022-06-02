@@ -1,8 +1,6 @@
 #include "Log.hpp"
 
-#include <sstream>
 #include <iostream>
-#include <fstream>
 
 bool Log::isDebugMode      = false;
 

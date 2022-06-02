@@ -19,8 +19,6 @@ private:
     
 public:
     Firebird(int x, int y);
-
-    virtual void update() override;
     
     virtual void render() override;
    

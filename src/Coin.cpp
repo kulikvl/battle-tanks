@@ -13,7 +13,7 @@ public:
     
     Coin( int x, int y) :
         GameObject(x,y),
-        image("../assets/Tab.png", 0)
+        image("assets/Tab.png", 0)
     {
     
     }

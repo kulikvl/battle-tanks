@@ -23,8 +23,6 @@ private:
     
 public:
     Freeze(int x, int y);
-
-    virtual void update() override;
     
     virtual void render() override;
     

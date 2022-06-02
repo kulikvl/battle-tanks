@@ -1,4 +1,5 @@
 #include "Sprite.hpp"
+
 #include "Tile.hpp"
 
 Sprite::Sprite(string filename, int atlasIndex, bool createCopyOfImage) :

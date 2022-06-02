@@ -20,17 +20,17 @@
 class Tank : public GameObject, public MoveableObject, public DamageableObject
 {
 protected:
-    /// Image of the tank
-    Sprite sprite;
-    
     /// Object that tells the road on which the tank is moving.
     const MazeSolver& mazeSolver;
+    
+    /// Image of the tank
+    Sprite sprite;
     
     /// The road on which the tank is moving.
     vector<string> path;
     
     /// Current path of the road on which the tank is moving.
-    int currentPathTile = 0;
+    size_t currentPathTile = 0;
     
     /// Particle inited on Tank destruction.
     ParticleTankExplosion part;

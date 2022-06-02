@@ -3,7 +3,7 @@
 Tile::Tile(int x, int y, Type type) :
     GameObject(x,y),
     type(type),
-    sprite("../assets/Tiles.png", (int)type, false)
+    sprite("assets/Tiles.png", (int)type, false)
 {
 }
 

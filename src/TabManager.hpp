@@ -8,7 +8,7 @@
 #include "Tile.hpp"
 
 #include <vector>
-#include <functional>
+#include <memory>
 #include <array>
 
 using namespace std;

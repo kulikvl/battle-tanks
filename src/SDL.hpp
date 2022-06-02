@@ -18,7 +18,6 @@
 ///
 struct SDL
 {
-    std::ostream  ff();
     static bool init();
     static void exit();
     static Window window;

@@ -2,13 +2,14 @@
 
 Tank::Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp) :
     GameObject(),
-    mazeSolver(mazeSolver),
-    sprite(sprite),
     MoveableObject(velocity),
     DamageableObject(hp),
+    mazeSolver(mazeSolver),
+    sprite(sprite),
     part(),
     timerAfterDeath(2000)
 {
+    
 }
 
 void Tank::setDirection()

@@ -2,11 +2,13 @@
 
 Turret::Turret(int x, int y, const Sprite& sprite, int damage, float reload, float radius) :
     GameObject(x,y),
-    sprite(sprite),
     ShootableObject(damage, reload, radius),
+    sprite(sprite),
     targetTank(nullptr),
+    distanceToTargetTank(MAXFLOAT),
     rotation(0.0f),
-    reloadTimer(reload * 1000)
+    reloadTimer(reload * 1000),
+    effectsAppliedOnTargetTank(false)
 {
     reloadTimer.startCounting();
 }

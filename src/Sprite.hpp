@@ -3,7 +3,6 @@
 
 #include "SDL.hpp"
 #include "Color.hpp"
-#include "Window.hpp"
 
 using namespace std;
 
@@ -19,15 +18,15 @@ class Sprite
 private:
     /// SDL's internal thingy that holds the image data.
     SDL_Texture* image;
-
-    /// Order in the atlas image.
-    int atlasIndex;
     
     /// Width of the texture.
     int width;
     
     /// Height of the texture.
     int height;
+    
+    /// Order in the atlas image.
+    int atlasIndex;
     
     /// Color of the texture.
     Color color;

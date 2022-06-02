@@ -1,13 +1,14 @@
 #ifndef MazeSolver_hpp
 #define MazeSolver_hpp
 
-#include <functional>
+#include <memory>
 #include <string>
 #include <sstream>
 #include <vector>
 #include <map>
 #include <set>
 #include <queue>
+#include <algorithm>
 
 #include "Tile.hpp"
 #include "Log.hpp"

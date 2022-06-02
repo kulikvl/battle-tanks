@@ -1,7 +1,7 @@
 #include "ParticleEffect.hpp"
 
 ParticleEffect::ParticleEffect() :
-    sprite("../assets/Particle.png")
+    sprite("assets/Particle.png")
 {
     setRenderer(SDL::window.renderer);
     setTexture(sprite.getTexture());
