@@ -1,8 +1,13 @@
 #ifndef SDL_hpp
 #define SDL_hpp
 
-#include <SDL2/SDL.h>
-#include <SDL2_image/SDL_image.h>
+#if __APPLE__
+    #include <SDL2/SDL.h>
+    #include <SDL2_image/SDL_image.h>
+#else
+    #include <SDL2/SDL.h>
+    #include <SDL2/SDL_image.h>
+#endif
 
 #include "Window.hpp"
 
@@ -13,6 +18,7 @@
 ///
 struct SDL
 {
+    std::ostream  ff();
     static bool init();
     static void exit();
     static Window window;

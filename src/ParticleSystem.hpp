@@ -3,7 +3,7 @@
 
 // Taken from https://github.com/scarsty/SDL2-particles
 
-#include "SDL2/SDL.h"
+#include "SDL.hpp"
 #include <vector>
 #include <string>
 
