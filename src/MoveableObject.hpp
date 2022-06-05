@@ -19,11 +19,8 @@ public:
     
 protected:
     bool isMoving;
-    
     float  velocity;
-    
     float  initialVelocity;
-    
     Direction direction;
     
 public:

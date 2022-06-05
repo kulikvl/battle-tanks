@@ -1,11 +1,20 @@
 #include "Player.hpp"
 #include "Config.hpp"
 #include "Log.hpp"
+#include <exception>
+#include <stdexcept>
 
-Player::Player(int coins) :
-    DamageableObject(3),
-    coins(coins)
+using namespace std;
+
+Player::Player(int initialHp, int initialCoins) :
+    DamageableObject(initialHp),
+    coins(initialCoins)
 {
+    if (initialHp <= 0 || initialCoins <= 0)
+    {
+        Log::error("Player::Player() -> Fail to init player, wrong values!");
+        throw runtime_error("Player::Player() exception");
+    }
 }
 
 void Player::addCoins(int value)
@@ -37,5 +46,5 @@ int Player::getCoins() const
 
 void Player::destroy()
 {
-    Log::debug("Player is destroyed! Tanks won!");
+    Log::log("Player is destroyed! Tanks won!");
 }

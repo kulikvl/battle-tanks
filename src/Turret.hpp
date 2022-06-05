@@ -48,7 +48,7 @@ public:
     virtual void shoot() override;
     
     /// Find closest tank from the vector of all tanks in the scene.
-    void findTargetTank(vector<shared_ptr<Tank> >& tanks);
+    void findTargetTank(const vector<shared_ptr<Tank> >& tanks);
     
     /// Use formula x^2 + y^2 = r^2 a then calculate real in-game coordinates of the end of gun (where it fires).
     void getCoordsOfGunpoint(float& x, float& y, float& d);

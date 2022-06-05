@@ -7,10 +7,12 @@
 class Player : public DamageableObject
 {
 private:
+    /// Player's coins.
     int coins;
     
 public:
-    Player(int coins);
+    /// Init.
+    Player(int initialHp, int initialCoins);
     
     void addCoins(int value);
     

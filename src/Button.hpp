@@ -3,7 +3,7 @@
 
 #include "SDL.hpp"
 
-/// \brief Class for representing basic button functionality
+/// \brief Abstract class for representing basic button functionality
 class Button
 {
 public:

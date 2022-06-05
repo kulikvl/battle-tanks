@@ -6,11 +6,6 @@ class ParticleFire : public ParticleEffect
 public:
     ParticleFire()
     {
-        initEffect();
-    }
-
-    virtual void initEffect() override
-    {
         setPosition(100, 384);
         
         setStartSpin(0);
@@ -72,7 +67,6 @@ public:
         _endColorVar.a = 0.0f;
 
         _posVar = { 1.0f, 3.0f };
-        
     }
 };
 

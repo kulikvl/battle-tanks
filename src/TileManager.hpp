@@ -2,6 +2,7 @@
 #define TileManager_hpp
 
 #include "Tile.hpp"
+#include "TileTurret.hpp"
 #include "Log.hpp"
 
 #include <memory>
@@ -44,6 +45,7 @@ public:
     
     /// Query all tiles of the specified types.
     vector<shared_ptr<Tile> > queryTilesOfTypes(const vector<Tile::Type>& types);
+    
 };
 
 #endif /* TileManager_hpp */

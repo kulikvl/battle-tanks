@@ -6,11 +6,6 @@ class ParticleShotExplosion : public ParticleEffect
 public:
     ParticleShotExplosion()
     {
-        initEffect();
-    }
-
-    virtual void initEffect() override
-    {
         initWithTotalParticles(300);
 
         // duration
@@ -68,7 +63,6 @@ public:
         _endColorVar.a = 0.0f;
 
         _posVar = { 0, 0 };
-        
     }
 };
 

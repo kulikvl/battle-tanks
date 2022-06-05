@@ -1,5 +1,10 @@
 # Makefile for SDL2 game Tower Defense for semestral work.
 
+COLOR_DEFAULT = \033[0m
+COLOR_STATUS = \033[1;33m
+COLOR_INFO = \033[1;36m
+COLOR_GOOD = \033[1;32m
+
 EXECUTABLE = kulikvl1
 
 CXX = g++
@@ -12,13 +17,6 @@ CHECKFLAGS = --leak-check=full
 # := is simple assignment, the command ( wildcard... ) will be executed once.
 # = is expanded assignment, the command will be executed every time we see SOURCES.
 SOURCES := $(wildcard src/*.cpp)
-
-
-
-COLOR_DEFAULT = \033[0m
-COLOR_STATUS = \033[1;33m
-COLOR_INFO = \033[1;36m
-COLOR_GOOD = \033[1;32m
 
 
 

@@ -12,7 +12,7 @@ class Tile : public GameObject
 {
 public:
     /// Width of the tile in the game.
-    /// @note *Every tile
+    /// @note *Every tile (Game design limitation).
     static const int WIDTH = 80;
     
     /// Types of the tile.

@@ -12,46 +12,8 @@ Turret::Turret(int x, int y, const Sprite& sprite, int damage, float reload, flo
 {
     reloadTimer.startCounting();
 }
-
-void Turret::update()
-{
-    if (targetTank != nullptr)
-    {
-        float A = sqrt( (targetTank->getY() - getY()) * (targetTank->getY() - getY()) );
-        float C = distanceToTargetTank;
-        float Cos = A / C;
-        rotation = acos(Cos) * 180.0f / M_PI;
-        if (targetTank->getY() >= getY()) {
-            rotation -= 180.0f;
-            if (targetTank->getX() <= getX()) rotation *= -1.0;
-        }
-        else if (targetTank->getX() >= getX() && targetTank->getY() <= getY()) {
-            rotation *= -1.0f;
-        }
-    }
-}
-
-void Turret::render()
-{
-    sprite.render(getX(), getY(), -90.0f - rotation);
-}
-
-void Turret::removeEffectsFromTargetTank()
-{
-    effectsAppliedOnTargetTank = false;
-}
-
-void Turret::shoot()
-{
-    if (targetTank != nullptr && !targetTank->isDead() && reloadTimer.isDone())
-    {
-        //Log::debug("SHOOT! - " + to_string(effectsAppliedOnTargetTank) );
-        targetTank->damage(damage);
-        reloadTimer.startCounting();
-    }
-}
-
-void Turret::findTargetTank(vector<shared_ptr<Tank> >& tanks)
+// TODO: change to unique
+void Turret::findTargetTank(const vector<shared_ptr<Tank> >& tanks)
 {
     if (targetTank != nullptr)
     {
@@ -86,8 +48,6 @@ void Turret::findTargetTank(vector<shared_ptr<Tank> >& tanks)
         }
     }
     
-    //if (effectsAppliedOnTargetTank == true) Log::error("should not be applied!");
-
     distanceToTargetTank = MAXFLOAT;
     float currentDistance = MAXFLOAT;
 
@@ -102,6 +62,43 @@ void Turret::findTargetTank(vector<shared_ptr<Tank> >& tanks)
             targetTank = tanks[i].get();
         }
     }
+}
+
+void Turret::update()
+{
+    if (targetTank != nullptr)
+    {
+        float A = sqrt( (targetTank->getY() - getY()) * (targetTank->getY() - getY()) );
+        float C = distanceToTargetTank;
+        float Cos = A / C;
+        rotation = acos(Cos) * 180.0f / M_PI;
+        if (targetTank->getY() >= getY()) {
+            rotation -= 180.0f;
+            if (targetTank->getX() <= getX()) rotation *= -1.0;
+        }
+        else if (targetTank->getX() >= getX() && targetTank->getY() <= getY()) {
+            rotation *= -1.0f;
+        }
+    }
+}
+
+void Turret::shoot()
+{
+    if (targetTank != nullptr && !targetTank->isDead() && reloadTimer.isDone())
+    {
+        targetTank->damage(damage);
+        reloadTimer.startCounting();
+    }
+}
+
+void Turret::render()
+{
+    sprite.render(getX(), getY(), -90.0f - rotation);
+}
+
+void Turret::removeEffectsFromTargetTank()
+{
+    effectsAppliedOnTargetTank = false;
 }
 
 void Turret::getCoordsOfGunpoint(float& x, float& y, float& d)
@@ -173,8 +170,6 @@ void Turret::getCoordsOfGunpoint(float& x, float& y, float& d)
                 yReal = 40.0f - yNormal;
         }
     }
-    
-    //cout << rotation << " " << xReal << "," << yReal << endl;
     
     float angle = -rotation + 90.0f;
     

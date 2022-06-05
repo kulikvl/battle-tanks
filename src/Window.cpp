@@ -15,7 +15,7 @@ Window::Window(unsigned int width, unsigned int height, string title) :
         throw "Window() exception";
     }
     
-    /// Create vsynced renderer for window; VSync allows the rendering to update at the same time as the monitor during verical refresh
+    /// Create vsynced renderer for window; VSync allows the rendering to update at the same time as the monitor during verical refresh.
     renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     
     if (renderer == nullptr)
@@ -28,12 +28,13 @@ Window::Window(unsigned int width, unsigned int height, string title) :
 
 Window::~Window()
 {
-    Log::debug("Destroy window...");
     destroy();
 }
 
 void Window::destroy()
 {
+    Log::debug("Free all textures...");
+    
     for (auto& x : textures)
     {
         if (!x.second.empty())
@@ -45,12 +46,16 @@ void Window::destroy()
     
     textures.clear();
     
+    Log::debug("Free renderer...");
+    
     if (renderer)
     {
         SDL_DestroyRenderer(renderer);
         renderer = nullptr;
     }
 
+    Log::debug("Free window...");
+    
     if (window)
     {
         SDL_DestroyWindow(window);
@@ -111,6 +116,3 @@ void Window::setBackgroundColor(Color color)
 {
     bg_color = color;
 }
-
-
-

@@ -6,12 +6,6 @@ class ParticleFreeze : public ParticleEffect
 public:
     ParticleFreeze()
     {
-        initEffect();
-    }
-
-    virtual void initEffect() override
-    {
-        
         setPosition(0, 0);
         
         setStartSpin(0);
@@ -74,7 +68,6 @@ public:
         _endColorVar.a = 0.0f;
 
         _posVar = { 1.0f, 3.0f };
-        
     }
 };
 

@@ -2,6 +2,11 @@
 
 #include <algorithm>
 
+ButtonManager::ButtonManager() :
+    currentSelectedButton(nullptr)
+{
+}
+
 ButtonManager::ButtonManager(const vector<shared_ptr<Tile>>& turretTiles, TurretManager* turretManager) :
     currentSelectedButton(nullptr),
     turretManager(turretManager)
@@ -42,15 +47,15 @@ void ButtonManager::handleEvent(SDL_Event* e)
 
         if( currentKeyStates[ SDL_SCANCODE_1 ] )
         {
-            turretManager->installTurret(TurretManager::TurretType::FIREBIRD, (TileTurret*)currentSelectedButton );
+            turretManager->installTurret(TurretType::FIREBIRD, (TileTurret*)currentSelectedButton );
         }
         else if( currentKeyStates[ SDL_SCANCODE_2 ] )
         {
-            turretManager->installTurret(TurretManager::TurretType::FREEZE, (TileTurret*)currentSelectedButton );
+            turretManager->installTurret(TurretType::FREEZE, (TileTurret*)currentSelectedButton );
         }
         else if( currentKeyStates[ SDL_SCANCODE_3 ] )
         {
-            turretManager->installTurret(TurretManager::TurretType::SMOKY, (TileTurret*)currentSelectedButton );
+            turretManager->installTurret(TurretType::SMOKY, (TileTurret*)currentSelectedButton );
         }
     }
 }

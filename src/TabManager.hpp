@@ -18,9 +18,11 @@ class TabManager : public GameObject
 {
 private:
     /// Coins on the tab.
+    /// @note Up to 17 coins can be displayed on the tab panel. (Game design limitation).
     array<unique_ptr<Coin>, 17> coins;
     
     /// Hearts on the tab.
+    /// @note Up to 3 hearts can be displayed on the tab panel. (Game design limitation).
     array<unique_ptr<Heart>, 3> hearts;
     
     /// Player object.

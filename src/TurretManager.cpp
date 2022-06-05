@@ -4,7 +4,6 @@ TurretManager::TurretManager(vector<shared_ptr<Tank> >& tanks, Player& player) :
     tanks(tanks),
     player(player)
 {
-    
 }
 
 void TurretManager::update()
@@ -47,7 +46,7 @@ void TurretManager::installTurret(TurretType type, TileTurret* tile)
         
         if (player.getCoins() < cost)
         {
-            Log::warning( string("Not enough coins! " + to_string(player.getCoins()) + " / " + to_string(cost)));
+            Log::warning( string("Not enough coins! " + to_string(player.getCoins()) + " / " + to_string(cost)) );
             return;
         }
         
@@ -56,13 +55,13 @@ void TurretManager::installTurret(TurretType type, TileTurret* tile)
         
         switch (type) {
             case TurretType::FIREBIRD:
-                turrets.push_back(make_shared<Firebird>(tile->getX(), tile->getY()));
+                turrets.push_back(make_unique<Firebird>(tile->getX(), tile->getY()));
                 break;
             case TurretType::FREEZE:
-                turrets.push_back(make_shared<Freeze>(tile->getX(), tile->getY()));
+                turrets.push_back(make_unique<Freeze>(tile->getX(), tile->getY()));
                 break;
             case TurretType::SMOKY:
-                turrets.push_back(make_shared<Smoky>(tile->getX(), tile->getY()));
+                turrets.push_back(make_unique<Smoky>(tile->getX(), tile->getY()));
                 break;
         }
         

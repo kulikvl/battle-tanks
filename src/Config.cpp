@@ -1,9 +1,10 @@
+#include "Config.hpp"
+
 #include <fstream>
 #include <vector>
 #include <algorithm>
 #include <exception>
-#include <iostream>
-#include "Config.hpp"
+
 #include "Utils.hpp"
 #include "Log.hpp"
 
@@ -20,7 +21,7 @@ void Config::load(string filename)
     if (!file.is_open())
     {
         Log::error("Config::load() -> Couldn't open '" + filename + "'");
-        throw "Config::load() exception";
+        throw runtime_error("Config::load() exception");
     }
 
     while (!file.eof())
@@ -33,8 +34,8 @@ void Config::load(string filename)
         size_t pos = line.find("=");
         if (pos == string::npos)
         {
-            Log::error("Config::load() -> Wrong format config file!");
-            throw "Config::load() exception";
+            Log::error("Config::load() -> Wrong format of config file!");
+            throw runtime_error("Config::load() exception");
         }
         
         string key = line.substr(0, pos);
@@ -44,7 +45,7 @@ void Config::load(string filename)
         
         if (Config::has(key))
         {
-            Log::warning("Config::load: Existing key '" +
+            Log::warning("Config::load() -> Existing key '" +
                          key +
                          "' that maps to '" +
                          value +
@@ -68,7 +69,7 @@ string Config::get(string key)
 
     if (it == Config::config.end())
     {
-        Log::error("Config::get: Tried to get unexisting key '" + key + "'");
+        Log::error("Config::get() -> Tried to get unexisting key '" + key + "'");
         return "";
     }
     

@@ -10,7 +10,6 @@ Tank::Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, i
     timerAfterDeath(2000),
     player(player)
 {
-    
 }
 
 void Tank::setDirection()

@@ -3,26 +3,38 @@
 #include "Log.hpp"
 #include "Config.hpp"
 
-TankManager::TankManager(const MazeSolver& mazeSolver, Player& player) :
+TankManager::TankManager(const MazeSolver& mazeSolver, Player& player, float delayLimit, float decreasingRate, float initialDelay, float initialDelayOffset) :
     mazeSolver(mazeSolver),
     timer(3000),
     tanksGenerated(0),
-    player(player)
+    player(player),
+    delayLimit(delayLimit),
+    decreasingRate(decreasingRate),
+    initialDelay(initialDelay),
+    initialDelayOffset(initialDelayOffset),
+    difficulty( Config::getInt("difficulty", 1))
 {
+    
     timer.startCounting();
 }
 
 void TankManager::generate()
 {
-    switch ( Utils::Random::between(0, 2) ) {
-        case 0:
+    TankTypes randomTankType = (TankTypes) Utils::Random::between(TankTypes::LIGHT, TankTypes::HEAVY);
+    
+    switch (randomTankType)
+    {
+        case TankTypes::LIGHT:
             tanks.push_back(make_shared<LightTank>(mazeSolver, player));
             break;
-        case 1:
+        case TankTypes::MEDIUM:
             tanks.push_back(make_shared<MediumTank>(mazeSolver, player));
             break;
-        case 2:
+        case TankTypes::HEAVY:
             tanks.push_back(make_shared<HeavyTank>(mazeSolver, player));
+            break;
+        default:
+            Log::error("Wrong tank type generated!");
             break;
     }
 }
@@ -35,15 +47,13 @@ void TankManager::update()
         
         tanksGenerated++;
         
-        int difficulty = Config::getInt("difficulty", 1);
+        float delay = Utils::Random::fbetween(initialDelay, initialDelay + initialDelayOffset) / sqrt( (float)difficulty );
         
-        float delay = Utils::Random::fbetween(4000.0f, 5500.0f) / sqrt( (float)difficulty);
+        delay -= tanksGenerated * decreasingRate;
         
-        delay -= tanksGenerated * 5.0f;
+        if (delay < delayLimit) delay = delayLimit;
         
-        if (delay < 250.0f) delay = 250.0f;
-        
-        timer.setDelay( delay );
+        timer.setDelay(delay);
 
         timer.startCounting();
     }

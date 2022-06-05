@@ -13,7 +13,7 @@
 ///     if (timer.isDone())
 ///         // do something
 ///
-class TimerCounter: public Timer
+class TimerCounter : public Timer
 {
 public:
     /// Creates a counter timer with *delay*.
@@ -37,6 +37,7 @@ private:
 
     /// If we've reached the delay we was set for.
     bool done;
+    
 };
 
 #endif /* TimerCounter_hpp */

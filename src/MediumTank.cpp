@@ -8,7 +8,6 @@ MediumTank::MediumTank(const MazeSolver& mazeSolver, Player& player) :
 
 void MediumTank::selectPath()
 {
-    Utils::Random::seed();
     if (Utils::Random::boolean() == true) path = mazeSolver.getLongestPath();
     else path = mazeSolver.getShortestPath();
     

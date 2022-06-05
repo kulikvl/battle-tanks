@@ -1,5 +1,5 @@
 #include "TileManager.hpp"
-#include "TileTurret.hpp"
+
 #include "Config.hpp"
 
 #include <fstream>
@@ -124,7 +124,7 @@ void TileManager::fill()
         }
     }
     
-    Log::debug("Tiles were successfully set.\n");
+    Log::debug("Tiles were successfully set");
 }
 
 void TileManager::render()
@@ -157,3 +157,4 @@ vector<shared_ptr<Tile> > TileManager::queryTilesOfTypes(const vector<Tile::Type
     
     return result;
 }
+

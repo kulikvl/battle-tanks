@@ -51,18 +51,19 @@ protected:
     /// It's a unique function for child Tank classes representing the specific kind of Tank.
     virtual void selectPath() = 0;
     
-public:
     /// Init the tank.
     Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp, Player& player);
     
+    virtual void destroy() override;
+    
+public:
     virtual void update() override;
     
     virtual void render() override;
     
-    virtual void destroy() override;
-    
     /// Get the pointer to the image of this tank.
     Sprite* getSprite();
+    
 };
 
 #endif /* Tank_hpp */

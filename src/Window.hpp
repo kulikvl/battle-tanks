@@ -71,7 +71,7 @@ public:
     ///
     /// @note Affects clearScreen().
     void setBackgroundColor(Color color = Color(0, 0, 0));
+    
 };
-
 
 #endif /* Window_hpp */

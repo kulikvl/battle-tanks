@@ -10,18 +10,15 @@ class ShootableObject
 {
 protected:
     int damage;
-    
     float reload;
-    
     float radius;
-    
     bool isShooting;
     
 public:
-    /// Init with default values.
     ShootableObject(int damage, float reload, float radius);
     
     virtual void shoot() = 0;
+    
 };
 
 

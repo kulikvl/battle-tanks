@@ -60,5 +60,3 @@ bool Utils::areEqual(float a, float b)
 {
     return fabs(a - b) <= 0.0001f; //numeric_limits<float>::epsilon();
 }
-
-

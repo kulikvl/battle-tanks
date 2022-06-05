@@ -18,9 +18,9 @@
 ///
 struct SDL
 {
+    static Window window;
     static bool init();
     static void exit();
-    static Window window;
 };
 
 #endif /* SDL_hpp */

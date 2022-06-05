@@ -11,11 +11,10 @@ private:
 public:
     bool show = false;
     
-    Coin( int x, int y) :
+    Coin(int x, int y) :
         GameObject(x,y),
         image("assets/Tab.png", 0)
     {
-    
     }
     
     virtual void update() override

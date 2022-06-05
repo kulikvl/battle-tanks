@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 Game::Game() :
-    player(Config::getInt("start_coins", 5)),
+    player(Config::getInt("start_hp", 3), Config::getInt("start_coins", 3)),
     tileManager(),
     mazeSolver(tileManager.queryTilesOfTypes({Tile::Type::ROAD, Tile::Type::ENTRY, Tile::Type::EXIT})),
     tankManager(mazeSolver, player),

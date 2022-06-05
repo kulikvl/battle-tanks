@@ -8,18 +8,17 @@
 /// @brief Parent class for every specific particle effect.
 class ParticleEffect : public ParticleSystem
 {
-private:
+protected:
     /// Particle image.
     Sprite sprite;
     
-public:
-    /// Init.
+    /// Init effect with customized particle settings.
     ParticleEffect();
     
+public:
     /// Draw particle.
     void draw(float x, float y, float angle);
-    
-    virtual void initEffect() = 0;
+
 };
 
 #endif /* ParticleEffect_hpp */

@@ -4,14 +4,12 @@ TabManager::TabManager(const Player& player) : player(player)
 {
     for (size_t i = 0; i < coins.size(); ++i)
     {
-        coins[i] = std::make_unique<Coin>((int)i*20,0);
+        coins[i] = std::make_unique<Coin>((int)i*20,0); // 20 pixels is distance between coins, can not be customized, because it is game design restriction.
     }
-    
-    const int offsetHeartTab = 400;
     
     for (size_t i = 0; i < hearts.size(); ++i)
     {
-        hearts[i] = std::make_unique<Heart>(offsetHeartTab + (int)i * Tile::WIDTH, 0);
+        hearts[i] = std::make_unique<Heart>(400 + (int)i * Tile::WIDTH, 0); // 400 pixels offset to the right, can not be customized, because it is game design restriction.
     }
 }
 

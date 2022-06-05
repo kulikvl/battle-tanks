@@ -16,20 +16,19 @@
 
 using namespace std;
 
-/// \brief Class for controlling and creating turrets
+enum TurretType
+{
+    FIREBIRD,
+    FREEZE,
+    SMOKY
+};
+
+/// \brief Class for controlling and creating turrets.
 class TurretManager
 {
-public:
-    enum TurretType
-    {
-        FIREBIRD,
-        FREEZE,
-        SMOKY
-    };
-    
 private:
     /// All current turrets.
-    vector<shared_ptr<Turret> > turrets;
+    vector<unique_ptr<Turret> > turrets;
     
     /// All current tanks.
     vector<shared_ptr<Tank> >& tanks;

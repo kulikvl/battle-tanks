@@ -77,6 +77,7 @@ private:
     uint8_t green; ///< Green component (0 is none, 255 is full).
     uint8_t blue;  ///< Blue component  (0 is none, 255 is full).
     uint8_t alpha; ///< Alpha component (0 is transparent, 255 is opacque).
+
 };
 
 #endif /* Color_hpp */

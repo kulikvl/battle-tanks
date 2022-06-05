@@ -1,7 +1,8 @@
 #include "SDL.hpp"
 #include "Log.hpp"
+#include <stdexcept>
 
-/// The whole game is designed for this resolution, that's why it can not be changed.
+/// @note The whole game is designed for this resolution, that's why it can not be changed.
 Window SDL::window = Window(640, 720, "Tower defense");
 
 bool SDL::init()
@@ -10,7 +11,7 @@ bool SDL::init()
     {
         Log::error("SDL::Init() -> Couldn't start SDL VIDEO");
         Log::error(std::string(SDL_GetError()));
-        throw "SDL_Init() exception";
+        throw runtime_error("SDL_Init() exception");
     }
     
     if (!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ))
@@ -23,7 +24,7 @@ bool SDL::init()
     {
         Log::error("SDL::Init() -> Couldn't start SDL IMG");
         Log::error(std::string(SDL_GetError()));
-        throw "IMG_Init() exception";
+        throw runtime_error("IMG_Init() exception");
     }
 
     return true;
@@ -31,8 +32,7 @@ bool SDL::init()
 
 void SDL::exit()
 {
-    Log::debug("Clear resources before exiting...");
-    //window.destroy();
+    Log::debug("Free SDL resources before exiting...");
     IMG_Quit();
     SDL_Quit();
 }

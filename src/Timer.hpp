@@ -65,6 +65,7 @@ protected:
 
     bool running;
     bool paused;
+    
 };
 
 #endif /* Timer_hpp */

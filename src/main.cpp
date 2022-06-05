@@ -14,19 +14,19 @@
  *
  * The most important class is Game, it contains the main game cycle and initialization of key objects that control and manage the gameplay.
  *
- * There are several static classes in the project, for example, SDL, Log, but their objects are the only ones within the entire project, so this is justified.
+ * There are several static classes in the project, for example, SDL, Log, Config but their functionality is global and the only one within the entire project, so this is justified.
  *
- * It is also worth mentioning that such objects (variable members) as 'window', 'renderer' in classes like SDL, used in class e.x. Sprite, are global and static, because they are common to all classes of the entire game (Of course, in a diverse and bigger game project, this would be bad practice, as we would want more possibilities).
+ * There are a lot of 'manager' classes, that create, update, renderer and overally control specific game objects, that they are responsible of. Such classes are: TileManager, TankManager, TurretManager.
  *
- * An important mention is the Config class, which represents the management of settings and customization of the game from an external file, and there I will present the save-file to demonstrate the functionality of the game.
+ * An important mention is the Config class, which represents the management of settings and customization of the game from an external file, and there I will present some save-files to demonstrate the functionality of the game.
  *
- * I attached great importance to polymorphism, because in games it is always quite easy to identify common features for game objects, they are classes MoveableObject, DamageableObject, GameObject and so on.
+ * I attached great importance to polymorphism, because in games it is always very important to identify common features for game objects, they are classes MoveableObject, DamageableObject, GameObject and so on.
  *
- * The project also provides standalone classes - such classes can be used with any project, so they are very flexible and easily portable. Examples of such classes: Timer, TimerCounter, Color, Utils, Log and so on.
+ * The project also provides stand-alone classes - such classes can be used in and compatible with any project, so they are very flexible. Examples of such classes: Timer, TimerCounter, Color, Utils, Log and so on.
  *
  * \section warning_sec Memory leak warning
  *
- * If you run the executable file through the 'valgrind' utility, it will almost always throw a memory leak (I have 64 bytes everytime). This is normal, and inevitable. This is typical for every library using Opengl.
+ * If you run the executable file through the 'valgrind' utility, it will almost always throw a memory leak. This is normal, and inevitable. This is typical for every library using Opengl.
  *
  */
 

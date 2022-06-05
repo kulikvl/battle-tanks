@@ -19,7 +19,6 @@ public:
         imageRedHeart("assets/Tab.png", 1),
         imageBlackHeart("assets/Tab.png", 2)
     {
-        
     }
     
     virtual void update() override
@@ -37,4 +36,5 @@ public:
             imageBlackHeart.render(getX(), getY());
         }
     }
+    
 };

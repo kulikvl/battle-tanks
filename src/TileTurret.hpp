@@ -11,6 +11,7 @@
 class TileTurret : public Tile, public Button
 {
 private:
+    /// Tells if this tile has a turret.
     bool hasTurret = false;
     
     friend class TurretManager;
