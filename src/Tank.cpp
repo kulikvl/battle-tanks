@@ -1,13 +1,14 @@
 #include "Tank.hpp"
 
-Tank::Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp) :
+Tank::Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp, Player& player) :
     GameObject(),
     MoveableObject(velocity),
     DamageableObject(hp),
     mazeSolver(mazeSolver),
     sprite(sprite),
     part(),
-    timerAfterDeath(2000)
+    timerAfterDeath(2000),
+    player(player)
 {
     
 }
@@ -38,7 +39,7 @@ void Tank::move()
         /* END */
         if (currentPathTile == path.size() - 2) {
             slow(100);
-            Player::hp--;
+            player.damage(1);
             isAlive = false;
             isActive = false;
             return;
@@ -99,7 +100,7 @@ void Tank::render()
 
 void Tank::destroy()
 {
-    Player::coins++;
+    player.addCoins(1);
     timerAfterDeath.startCounting();
 }
 

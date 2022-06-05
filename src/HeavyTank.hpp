@@ -9,7 +9,7 @@ class HeavyTank : public Tank
 private:
     virtual void selectPath() override;
 public:
-    HeavyTank(const MazeSolver& mazeSolver);
+    HeavyTank(const MazeSolver& mazeSolver, Player& player);
 };
 
 #endif /* HeavyTank_hpp */

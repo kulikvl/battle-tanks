@@ -23,9 +23,12 @@ private:
     /// Hearts on the tab.
     array<unique_ptr<Heart>, 3> hearts;
     
+    /// Player object.
+    const Player& player;
+    
 public:
     /// Init.
-    TabManager();
+    TabManager(const Player& player);
     
     virtual void update() override;
     

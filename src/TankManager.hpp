@@ -8,6 +8,8 @@
 #include "MediumTank.hpp"
 #include "HeavyTank.hpp"
 
+#include "Player.hpp"
+
 #include "Tile.hpp"
 
 #include <memory>
@@ -37,9 +39,12 @@ private:
     /// Count of generated tanks.
     size_t tanksGenerated;
     
+    /// Player object.
+    Player& player;
+    
 public:
     /// Init everything.
-    TankManager(const MazeSolver& mazeSolver);
+    TankManager(const MazeSolver& mazeSolver, Player& player);
     
     void generate();
     
@@ -49,6 +54,7 @@ public:
     
     /// Get vector of current tanks in the scene.
     vector<shared_ptr<Tank> >& getTanks();
+    
 };
 
 #endif /* TankManager_hpp */

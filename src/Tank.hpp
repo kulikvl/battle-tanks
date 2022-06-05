@@ -12,6 +12,7 @@
 #include "Config.hpp"
 #include "Utils.hpp"
 #include "TileManager.hpp"
+#include "Player.hpp"
 
 /// \brief Class that represents enemy as a tank.
 ///
@@ -38,6 +39,9 @@ protected:
     /// Timer used after death to set this object inactive.
     TimerCounter timerAfterDeath;
     
+    /// Player object
+    Player& player;
+    
     /// Sets direction of the tank which is moving.
     void setDirection();
     
@@ -49,7 +53,7 @@ protected:
     
 public:
     /// Init the tank.
-    Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp);
+    Tank(const MazeSolver& mazeSolver, const Sprite& sprite, float velocity, int hp, Player& player);
     
     virtual void update() override;
     

@@ -30,6 +30,9 @@ public:
     };
     
 private:
+    /// Player object.
+    Player player;
+    
     /// Organise and create tiles.
     TileManager tileManager;
     

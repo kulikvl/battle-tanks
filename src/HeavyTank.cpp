@@ -1,7 +1,7 @@
 #include "HeavyTank.hpp"
 
-HeavyTank::HeavyTank(const MazeSolver& mazeSolver) :
-    Tank(mazeSolver, Sprite("assets/Tanks.png", 2, true), Config::getFloat("heavytank_velocity", 2.5f), Config::getInt("heavytank_hp", 6) )
+HeavyTank::HeavyTank(const MazeSolver& mazeSolver, Player& player) :
+    Tank(mazeSolver, Sprite("assets/Tanks.png", 2, true), Config::getFloat("heavytank_velocity", 2.5f), Config::getInt("heavytank_hp", 6), player )
 {
     selectPath();
 }

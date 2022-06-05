@@ -1,17 +1,23 @@
 #include "Game.hpp"
 
 Game::Game() :
+    player(Config::getInt("start_coins", 5)),
     tileManager(),
     mazeSolver(tileManager.queryTilesOfTypes({Tile::Type::ROAD, Tile::Type::ENTRY, Tile::Type::EXIT})),
-    tankManager(mazeSolver),
-    turretManager(tankManager.getTanks()),
+    tankManager(mazeSolver, player),
+    turretManager(tankManager.getTanks(), player),
     buttonManager(tileManager.queryTilesOfTypes({Tile::Type::TURRET}), &turretManager),
-    tabManager(),
+    tabManager(player),
     state(State::PLAYING),
     endScreenImage("assets/EndScreen.png")
 {
+    if (Config::getBool("godmode", false) == true)
+    {
+        player.heal(999);
+        player.addCoins(999);
+    }
+    
     Utils::Random::seed();
-    Player::coins = Config::getInt("start_coins", 5);
 }
 
 void Game::run()
@@ -22,51 +28,53 @@ void Game::run()
 
     while (!quit)
     {
-        if (Config::getBool("godmode", false) == true)
+        switch (state)
         {
-            Player::hp    = 999;
-            Player::coins = 999;
+            case State::ENDSCREEN:
+                
+                while (SDL_PollEvent(&e) != 0)
+                {
+                    if (e.type == SDL_QUIT) quit = true;
+                }
+                
+                SDL::window.clear();
+                
+                endScreenImage.render(0, 0);
+                
+                SDL::window.refresh();
+                
+                break;
+                
+            case State::PLAYING:
+                
+                while (SDL_PollEvent(&e) != 0)
+                {
+                    if (e.type == SDL_QUIT) quit = true;
+                    
+                    buttonManager.handleEvent(&e);
+                }
+                
+                tileManager.update();
+                tankManager.update();
+                turretManager.update();
+                tabManager.update();
+                
+                if (player.isDead())
+                {
+                    state = State::ENDSCREEN;
+                }
+                
+                SDL::window.clear();
+                
+                tileManager.render();
+                tankManager.render();
+                turretManager.render();
+                tabManager.render();
+                
+                SDL::window.refresh();
+                
+                break;
         }
-        
-        if (Player::hp <= 0)
-        {
-            state = State::ENDSCREEN;
-        }
-        
-        while (SDL_PollEvent(&e) != 0)
-        {
-            if (e.type == SDL_QUIT) quit = true;
-            
-            if (state == State::PLAYING)
-            {
-                buttonManager.handleEvent(&e);
-            }
-        }
-        
-        if (state == State::PLAYING)
-        {
-            tileManager.update();
-            tankManager.update();
-            turretManager.update();
-            tabManager.update();
-        }
-       
-        SDL::window.clear();
-        
-        if (state == State::PLAYING)
-        {
-            tileManager.render();
-            tankManager.render();
-            turretManager.render();
-            tabManager.render();
-        }
-
-        if (state == State::ENDSCREEN)
-        {
-            endScreenImage.render(0, 0);
-        }
-
-        SDL::window.refresh();
     }
 }
 

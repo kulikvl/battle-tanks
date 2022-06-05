@@ -1,17 +1,25 @@
 #ifndef Player_h
 #define Player_h
 
-/// @brief Small static class container for 'player' statistics
-class Player
+#include "DamageableObject.hpp"
+
+/// @brief Class, which represents player and it's game data.
+class Player : public DamageableObject
 {
-public:
-    /// Max coins = 17.
-    /// @note Define in 'Game' modul.
-    static int coins;
+private:
+    int coins;
     
-    /// Max (inital) hp = 3.
-    /// @note Always is fixed amount.
-    static int hp;
+public:
+    Player(int coins);
+    
+    void addCoins(int value);
+    
+    void substractCoins(int value);
+    
+    int getCoins() const;
+    
+    virtual void destroy() override;
+    
 };
 
 #endif /* Player_h */

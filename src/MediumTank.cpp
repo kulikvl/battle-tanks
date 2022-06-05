@@ -1,7 +1,7 @@
 #include "MediumTank.hpp"
 
-MediumTank::MediumTank(const MazeSolver& mazeSolver) :
-    Tank(mazeSolver, Sprite("assets/Tanks.png", 1, true), Config::getFloat("mediumtank_velocity", 2.5f), Config::getInt("mediumtank_hp", 6) )
+MediumTank::MediumTank(const MazeSolver& mazeSolver, Player& player) :
+    Tank(mazeSolver, Sprite("assets/Tanks.png", 1, true), Config::getFloat("mediumtank_velocity", 2.5f), Config::getInt("mediumtank_hp", 6), player )
 {
     selectPath();
 }

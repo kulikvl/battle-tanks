@@ -3,10 +3,11 @@
 #include "Log.hpp"
 #include "Config.hpp"
 
-TankManager::TankManager(const MazeSolver& mazeSolver) :
+TankManager::TankManager(const MazeSolver& mazeSolver, Player& player) :
     mazeSolver(mazeSolver),
     timer(3000),
-    tanksGenerated(0)
+    tanksGenerated(0),
+    player(player)
 {
     timer.startCounting();
 }
@@ -15,13 +16,13 @@ void TankManager::generate()
 {
     switch ( Utils::Random::between(0, 2) ) {
         case 0:
-            tanks.push_back(make_shared<LightTank>(mazeSolver));
+            tanks.push_back(make_shared<LightTank>(mazeSolver, player));
             break;
         case 1:
-            tanks.push_back(make_shared<MediumTank>(mazeSolver));
+            tanks.push_back(make_shared<MediumTank>(mazeSolver, player));
             break;
         case 2:
-            tanks.push_back(make_shared<HeavyTank>(mazeSolver));
+            tanks.push_back(make_shared<HeavyTank>(mazeSolver, player));
             break;
     }
 }

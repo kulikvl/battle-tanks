@@ -1,6 +1,6 @@
 #include "TabManager.hpp"
 
-TabManager::TabManager()
+TabManager::TabManager(const Player& player) : player(player)
 {
     for (size_t i = 0; i < coins.size(); ++i)
     {
@@ -19,7 +19,7 @@ void TabManager::update()
 {
     for (size_t i = 0; i < coins.size(); ++i)
     {
-        if ((int)i < Player::coins)
+        if ((int)i < player.getCoins())
             coins[i]->show = true;
         else
             coins[i]->show = false;
@@ -27,7 +27,7 @@ void TabManager::update()
     
     for (size_t i = 0; i < hearts.size(); ++i)
     {
-        if ((int)i < Player::hp)
+        if ((int)i < player.getHitpoints())
             hearts[i]->isRed = true;
         else
             hearts[i]->isRed = false;

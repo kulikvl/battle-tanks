@@ -34,9 +34,12 @@ private:
     /// All current tanks.
     vector<shared_ptr<Tank> >& tanks;
     
+    /// Player object.
+    Player& player;
+    
 public:
     /// Init with getting reference to vector of current tanks.
-    TurretManager(vector<shared_ptr<Tank> >& tanks);
+    TurretManager(vector<shared_ptr<Tank> >& tanks, Player& player);
 
     void update();
     

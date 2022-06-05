@@ -1,6 +1,8 @@
 #include "TurretManager.hpp"
 
-TurretManager::TurretManager(vector<shared_ptr<Tank> >& tanks) : tanks(tanks)
+TurretManager::TurretManager(vector<shared_ptr<Tank> >& tanks, Player& player) :
+    tanks(tanks),
+    player(player)
 {
     
 }
@@ -43,9 +45,9 @@ void TurretManager::installTurret(TurretType type, TileTurret* tile)
                 break;
         }
         
-        if (Player::coins < cost)
+        if (player.getCoins() < cost)
         {
-            Log::warning( string("Not enough coins! " + to_string(Player::coins) + " / " + to_string(cost)));
+            Log::warning( string("Not enough coins! " + to_string(player.getCoins()) + " / " + to_string(cost)));
             return;
         }
         
@@ -64,6 +66,7 @@ void TurretManager::installTurret(TurretType type, TileTurret* tile)
                 break;
         }
         
-        Player::coins -= cost;
+        player.substractCoins(cost);
+        
     }
 }

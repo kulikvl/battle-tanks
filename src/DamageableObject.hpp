@@ -24,10 +24,10 @@ public:
     void damage(int d);
 
     /// Tells if it have been destroyed.
-    bool isDead();
+    bool isDead() const;
 
     /// Return ammount of hitpoints left.
-    int getHitpoints();
+    int getHitpoints() const;
     
     /// Method called on destruction of the object
     virtual void destroy() = 0;
