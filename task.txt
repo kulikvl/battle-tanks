@@ -1,11 +1,4 @@
 --------- Introduction --------- 
-The initial task from the Progtest system: 
-    Write a graphic game in the genre of Tower Defense.
-    This game should be able to (main points):
-    1. Read game maps and characteristics of enemies/towers from ﬁles.
-    2. Implement several strategies for passing the game map.
-    3. Implement score statistics and the interaction of towers and enemies.
-
 My definition of the task:
     The style of the game will resemble the classic arcade 2D pixel game of the old days of the dawn 
     of the gaming industry - “Battle city”.

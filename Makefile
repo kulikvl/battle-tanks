@@ -1,4 +1,4 @@
-# Makefile for SDL2 game Tower Defense for semestral work.
+# Makefile for SDL2 game Tower Defense.
 
 COLOR_DEFAULT = \033[0m
 COLOR_STATUS = \033[1;33m
