@@ -17,20 +17,20 @@ Sprite::Sprite(string filename, int atlasIndex, bool createCopyOfImage) :
     height = h;
 }
 
-void Sprite::render(float x, float y, float angle, SDL_FPoint* center, SDL_RendererFlip flip)
+void Sprite::render(float x, float y, float angle, SDL_Point* center, SDL_RendererFlip flip)
 {
-    SDL_FRect renderQuad = { x, y, (float) width, (float) height };
-
+    SDL_Rect renderQuad = { (int)x, (int)y, width, height };
+    
     if (atlasIndex >= 0)
     {
         SDL_Rect clip {atlasIndex * Tile::WIDTH, 0, Tile::WIDTH, Tile::WIDTH};
         renderQuad.w = clip.w;
         renderQuad.h = clip.h;
-        SDL_RenderCopyExF( SDL::window.renderer, image, &clip, &renderQuad, (double) angle, center, flip );
+        SDL_RenderCopyEx( SDL::window.renderer, image, &clip, &renderQuad, (double) angle, center, flip );
     }
     else
     {
-        SDL_RenderCopyExF( SDL::window.renderer, image, nullptr, &renderQuad, (double) angle, center, flip );
+        SDL_RenderCopyEx( SDL::window.renderer, image, nullptr, &renderQuad, (double) angle, center, flip );
     }
 }
 

@@ -11,8 +11,8 @@ namespace Utils
     namespace Random
     {
         std::mt19937 engine;
-    };
-};
+    }
+}
 
 void Utils::Random::seed()
 {

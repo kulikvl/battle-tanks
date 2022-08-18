@@ -2,6 +2,7 @@
 #define GameObject_hpp
 
 #include "SDL.hpp"
+#include "Utils.hpp"
 
 /// \brief Abstract stuff for any kind of game object.
 ///
@@ -11,7 +12,7 @@ class GameObject
 {
 protected:
     /// Position of the game object.
-    SDL_FPoint position;
+    FPoint position;
     
 public:
     /// Init gameObject.

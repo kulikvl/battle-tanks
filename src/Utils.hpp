@@ -22,7 +22,7 @@ namespace Utils
 
         /// Random boolean.
         bool boolean();
-    };
+    }
 
     // These 2 functions below are general-purpose but only for the local use in this game
 
@@ -44,6 +44,14 @@ namespace Utils
     /// Function for comparing floats on equality.
     /// @note Using epsilon constant
     bool        areEqual(float a, float b);
+}
+
+struct FPoint
+{
+    float x;
+    float y;
 };
+
+
 
 #endif /* Utils_hpp */

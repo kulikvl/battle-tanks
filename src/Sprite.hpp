@@ -45,7 +45,7 @@ public:
     ///
     /// @note Don't forget to refresh the `Window`.
     ///
-    void render(float x, float y, float angle = 0.0f, SDL_FPoint* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void render(float x, float y, float angle = 0.0f, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
     
     /// Returns the width of the sprite image on pixels.
     int getWidth();
