@@ -1,5 +1,3 @@
-# Makefile for SDL2 game Tower Defense.
-
 COLOR_DEFAULT = \033[0m
 COLOR_STATUS = \033[1;33m
 COLOR_INFO = \033[1;36m
@@ -13,16 +11,10 @@ LDFLAGS = -lSDL2 -lSDL2_image
 CHECK = valgrind
 CHECKFLAGS = --leak-check=full
 
-# wildcard (make syntax) returns a list of all the source files with a particular extension.
-# := is simple assignment, the command ( wildcard... ) will be executed once.
-# = is expanded assignment, the command will be executed every time we see SOURCES.
 SOURCES := $(wildcard src/*.cpp)
-
-
 
 all: doc compile
 
-# get SOURCES list, but replace .cpp with .o
 compile: $(SOURCES:.cpp=.o)
 	@echo "$(COLOR_INFO)compiling with flags $(COLOR_DEFAULT)$(CXXFLAGS) $(LDFLAGS)"
 	@$(CXX) $(CXXFLAGS) $(SOURCES:.cpp=.o) $(LDFLAGS) -o $(EXECUTABLE) 
@@ -60,21 +52,9 @@ help:
 	@echo "  $(COLOR_STATUS)clean$(COLOR_DEFAULT)     removes all of the compiled files, executable and documentation"
 	@echo "  $(COLOR_STATUS)help$(COLOR_DEFAULT)      print this message"
 
-
-
-# 	% is used for pattern matching, and it requires one in the target as well as one in the dependencies.
-# -MM flag returns all dependencies for source file. -MT flag allows to specify a name for the target (e.x. not main.o: ... , but someTargetName: ...).
-# 	$@	Target name.
-# 	$<	First dependancy name.
-#	$*	Target name without end suffix.
-#	$^	All dependancies names.
-# @ is to ignore printing the content of the command.
 %.o: %.cpp
 	@echo "$(COLOR_STATUS)$< -> $@$(COLOR_DEFAULT)"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 	@$(CXX) $(CXXFLAGS) $(LDFLAGS) -MM -MT $*.o $*.cpp  > $*.d
 
-
-
-# inserts contents of files here ('-' means to ignore a makefile which does not exist)
 -include $(SOURCES:.cpp=.d)
